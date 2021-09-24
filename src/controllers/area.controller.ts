@@ -8,9 +8,9 @@ import {
   Tags,
 } from '@tsoa/runtime'
 import { AreaRepository } from '../repositories/area.repository'
-import { IAreaGetResponse } from '../types/responses/informplus/area/area.response'
-import { IAreaIdentifierGetResponse } from '../types/responses/informplus/area/areaidentifier.response'
-import { IAreaIdentifierBoundGetResponse } from '../types/responses/informplus/area/areaidentifierbound.response'
+import { IAreaGetResponse } from '../types/responses/informplus/areas/area.response'
+import { IAreaIdentifierGetResponse } from '../types/responses/informplus/areas/areaidentifier.response'
+import { IAreaIdentifierBoundGetResponse } from '../types/responses/informplus/areas/areaidentifierbound.response'
 
 @Route('v1/areas')
 @Tags('area')

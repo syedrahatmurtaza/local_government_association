@@ -15,19 +15,10 @@ import { ApiKeyUtil } from '../../utils/apikey.util'
 export class AreaService {
   instance: AxiosInstance
   key: string
-  public static KEY_VALUE: string
 
   constructor() {
     this.instance = axios.create()
     this.key = 'ApplicationKey='
-  }
-
-  static getKeyValue() {
-    return this.KEY_VALUE
-  }
-
-  static setKeyValue(value: string) {
-    this.KEY_VALUE = value
   }
 
   async getArea(params: any) {

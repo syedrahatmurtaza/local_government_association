@@ -39,3 +39,6 @@ export const AREA_IDENTIFIER_BOUNDS_TARGET_URL =
 export const SUB_BOUND_TARGET_URL = '/bounds'
 
 /***************************      Target API Bounds    *****************************************/
+// Area Identifier Bound
+export const BOUND_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/bounds/'

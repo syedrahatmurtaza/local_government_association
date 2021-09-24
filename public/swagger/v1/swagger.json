@@ -500,6 +500,18 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"IBoundsGetResponse": {
+				"properties": {
+					"boundingBox": {
+						"$ref": "#/components/schemas/BoundingBox"
+					}
+				},
+				"required": [
+					"boundingBox"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -881,6 +893,40 @@
 					}
 				]
 			}
+		},
+		"/v1/bounds": {
+			"get": {
+				"operationId": "GetBounds",
+				"responses": {
+					"200": {
+						"description": "IBoundsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IBoundsGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Co-ordinates for the minimum and maxim longitude and latitudes for a particular area or group of areas",
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Returns the minimum and maximum longitudes for an area or group of areas",
+						"in": "query",
+						"name": "area",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -898,6 +944,9 @@
 		},
 		{
 			"name": "area"
+		},
+		{
+			"name": "bounds"
 		}
 	]
 }
