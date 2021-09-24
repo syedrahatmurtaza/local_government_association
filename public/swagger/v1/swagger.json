@@ -676,6 +676,148 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Identifier": {
+				"enum": [
+					"AcademicYear",
+					"AnnualFromMarch",
+					"BiannuallyFinancial",
+					"CalendarQuarter",
+					"CalendarYear",
+					"CensusYear",
+					"DTOCWeek",
+					"Daily",
+					"EarlyYearsCensusYear",
+					"ElectionYear",
+					"FinancialQuarter",
+					"FinancialYear",
+					"FiveYearCalendar",
+					"FiveYearFinancial",
+					"Month",
+					"RollingCalendarQuarter",
+					"RollingWeek",
+					"SnapshotAnnual30September",
+					"SnapshotAnnual31March",
+					"SnapshotAnnual31May",
+					"SnapshotAnnualFebruary",
+					"SnapshotAnnualJanuary",
+					"SnapshotQuarterly",
+					"TaxbaseAnnual",
+					"ThreeYearAcademic",
+					"ThreeYearFinancial",
+					"ThreeYearPeriod",
+					"ThreeYearWinters",
+					"WeekEndFriday",
+					"WeekEndSunday",
+					"Winter",
+					"YearToDateQuarter2"
+				],
+				"type": "string"
+			},
+			"Label": {
+				"enum": [
+					"Academic year",
+					"Annual (from March)",
+					"Biannually financial",
+					"Calendar quarter",
+					"Calendar year",
+					"Census year",
+					"Daily",
+					"Delayed Transfer of Care week",
+					"Early Years Census year",
+					"Election year",
+					"Financial quarter",
+					"Financial year",
+					"Financial year (to quarter 2)",
+					"Five-year calendar",
+					"Five-year financial",
+					"Month",
+					"Rolling calendar quarter",
+					"Rolling week",
+					"Snapshot (30 September)",
+					"Snapshot (31 March)",
+					"Snapshot (31 May)",
+					"Snapshot (February)",
+					"Snapshot (January)",
+					"Snapshot (quarterly)",
+					"Taxbase annual",
+					"Three-year academic",
+					"Three-year financial",
+					"Three-year period",
+					"Three-year winters",
+					"Weekly",
+					"Weekly (to Sunday)",
+					"Winter"
+				],
+				"type": "string"
+			},
+			"Frequency": {
+				"enum": [
+					"Annually",
+					"Daily",
+					"EveryDecade",
+					"Monthly",
+					"Quarterly",
+					"SixMonths",
+					"Weekly"
+				],
+				"type": "string"
+			},
+			"AtorPeriodType": {
+				"properties": {
+					"identifier": {
+						"$ref": "#/components/schemas/Identifier"
+					},
+					"label": {
+						"$ref": "#/components/schemas/Label"
+					},
+					"frequency": {
+						"$ref": "#/components/schemas/Frequency"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"frequency"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CalculationPeriodTypeRuleArray": {
+				"properties": {
+					"numeratorPeriodType": {
+						"$ref": "#/components/schemas/AtorPeriodType"
+					},
+					"denominatorPeriodType": {
+						"$ref": "#/components/schemas/AtorPeriodType"
+					},
+					"matchType": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"numeratorPeriodType",
+					"denominatorPeriodType",
+					"matchType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICalculationPeriodTypeRulesGetResponse": {
+				"properties": {
+					"calculationPeriodTypeRuleArray": {
+						"items": {
+							"$ref": "#/components/schemas/CalculationPeriodTypeRuleArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"calculationPeriodTypeRuleArray"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -1186,6 +1328,52 @@
 					}
 				]
 			}
+		},
+		"/v1/calculationPeriodTypeRules": {
+			"get": {
+				"operationId": "GetCalculationPeriodTypeRules",
+				"responses": {
+					"200": {
+						"description": "ICalculationPeriodTypeRulesGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ICalculationPeriodTypeRulesGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show match type for different combinations of numerator and denominator period type",
+				"tags": [
+					"calculationPeriodTypeRules"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Show match type for calculations with a specific denominator",
+						"in": "query",
+						"name": "denominatorPeriodType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Show match type for calculations with a specific numerator",
+						"in": "query",
+						"name": "numeratorPeriodType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -1209,6 +1397,9 @@
 		},
 		{
 			"name": "calculationMethods"
+		},
+		{
+			"name": "calculationPeriodTypeRules"
 		}
 	]
 }

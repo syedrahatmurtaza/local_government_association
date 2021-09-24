@@ -10,6 +10,8 @@ import { AreaTypesController } from './../controllers/areatypes.controller';
 import { BoundController } from './../controllers/bound.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { CalculationMethodController } from './../controllers/calculationmethod.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { CalculationPeriodTypeRulesController } from './../controllers/calculationperiodtyperules.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -307,6 +309,49 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "calculationMethod": {"ref":"CalculationMethodIdentifier","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Identifier": {
+        "dataType": "refEnum",
+        "enums": ["AcademicYear","AnnualFromMarch","BiannuallyFinancial","CalendarQuarter","CalendarYear","CensusYear","DTOCWeek","Daily","EarlyYearsCensusYear","ElectionYear","FinancialQuarter","FinancialYear","FiveYearCalendar","FiveYearFinancial","Month","RollingCalendarQuarter","RollingWeek","SnapshotAnnual30September","SnapshotAnnual31March","SnapshotAnnual31May","SnapshotAnnualFebruary","SnapshotAnnualJanuary","SnapshotQuarterly","TaxbaseAnnual","ThreeYearAcademic","ThreeYearFinancial","ThreeYearPeriod","ThreeYearWinters","WeekEndFriday","WeekEndSunday","Winter","YearToDateQuarter2"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Label": {
+        "dataType": "refEnum",
+        "enums": ["Academic year","Annual (from March)","Biannually financial","Calendar quarter","Calendar year","Census year","Daily","Delayed Transfer of Care week","Early Years Census year","Election year","Financial quarter","Financial year","Financial year (to quarter 2)","Five-year calendar","Five-year financial","Month","Rolling calendar quarter","Rolling week","Snapshot (30 September)","Snapshot (31 March)","Snapshot (31 May)","Snapshot (February)","Snapshot (January)","Snapshot (quarterly)","Taxbase annual","Three-year academic","Three-year financial","Three-year period","Three-year winters","Weekly","Weekly (to Sunday)","Winter"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Frequency": {
+        "dataType": "refEnum",
+        "enums": ["Annually","Daily","EveryDecade","Monthly","Quarterly","SixMonths","Weekly"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "AtorPeriodType": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"ref":"Identifier","required":true},
+            "label": {"ref":"Label","required":true},
+            "frequency": {"ref":"Frequency","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CalculationPeriodTypeRuleArray": {
+        "dataType": "refObject",
+        "properties": {
+            "numeratorPeriodType": {"ref":"AtorPeriodType","required":true},
+            "denominatorPeriodType": {"ref":"AtorPeriodType","required":true},
+            "matchType": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ICalculationPeriodTypeRulesGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "calculationPeriodTypeRuleArray": {"dataType":"array","array":{"dataType":"refObject","ref":"CalculationPeriodTypeRuleArray"},"required":true},
         },
         "additionalProperties": false,
     },
@@ -611,6 +656,31 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getCalculationMethodsIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/calculationPeriodTypeRules',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function CalculationPeriodTypeRulesController_getCalculationPeriodTypeRules(request: any, response: any, next: any) {
+            const args = {
+                    denominatorPeriodType: {"in":"query","name":"denominatorPeriodType","dataType":"string"},
+                    numeratorPeriodType: {"in":"query","name":"numeratorPeriodType","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new CalculationPeriodTypeRulesController();
+
+
+            const promise = controller.getCalculationPeriodTypeRules.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

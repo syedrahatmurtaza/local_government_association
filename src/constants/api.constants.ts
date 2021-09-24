@@ -55,3 +55,8 @@ export const CALCULATION_METHODS_VERBOSE_TARGET_URL =
 // Calculation Methods Verbose
 export const CALCULATION_METHODS_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/calculationMethods/'
+
+/***************************      Target API Calculation Period Type Rules    *****************************************/
+// Calculation Period Type Rules
+export const CALCULATION_PERIOD_TYPE_RULES_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/calculationPeriodTypeRules'
