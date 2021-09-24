@@ -26,7 +26,8 @@
       },
       { "name": "areaTypes" },
       { "name": "area" },
-      { "name": "bounds" }
+      { "name": "bounds" },
+      { "name": "calculationMethods" }
     ]
   },
   "routes": {

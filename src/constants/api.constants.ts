@@ -39,6 +39,19 @@ export const AREA_IDENTIFIER_BOUNDS_TARGET_URL =
 export const SUB_BOUND_TARGET_URL = '/bounds'
 
 /***************************      Target API Bounds    *****************************************/
-// Area Identifier Bound
+// Bounds
 export const BOUND_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/bounds/'
+
+/***************************      Target API Calculation Methods    *****************************************/
+// Calculation Methods
+export const CALCULATION_METHODS_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/calculationMethods/'
+
+// Calculation Methods Verbose
+export const CALCULATION_METHODS_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/calculationMethods/verbose'
+
+// Calculation Methods Verbose
+export const CALCULATION_METHODS_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/calculationMethods/'

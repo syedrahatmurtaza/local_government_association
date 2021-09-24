@@ -512,6 +512,170 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"CalculationMethodArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICalculationMethodGetResponse": {
+				"properties": {
+					"calculationMethod-array": {
+						"items": {
+							"$ref": "#/components/schemas/CalculationMethodArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"calculationMethod-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Field": {
+				"properties": {
+					"label": {
+						"type": "string"
+					},
+					"identifier": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"lookupTable": {
+						"type": "string"
+					},
+					"lookupId": {
+						"type": "string"
+					},
+					"lookupDisplay": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"label",
+					"identifier",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CalculationMethodArrayVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"fields": {
+						"items": {
+							"$ref": "#/components/schemas/Field"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"fields"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICalculationMethodVerboseGetResponse": {
+				"properties": {
+					"calculationMethod-array": {
+						"items": {
+							"$ref": "#/components/schemas/CalculationMethodArrayVerbose"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"calculationMethod-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FieldIdentifier": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CalculationMethodIdentifier": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"fields": {
+						"items": {
+							"$ref": "#/components/schemas/FieldIdentifier"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ICalculationMethodIdentifierGetResponse": {
+				"properties": {
+					"calculationMethod": {
+						"$ref": "#/components/schemas/CalculationMethodIdentifier"
+					}
+				},
+				"required": [
+					"calculationMethod"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -910,6 +1074,9 @@
 					}
 				},
 				"summary": "Co-ordinates for the minimum and maxim longitude and latitudes for a particular area or group of areas",
+				"tags": [
+					"bounds"
+				],
 				"security": [
 					{
 						"apiKeyAuth": []
@@ -923,6 +1090,98 @@
 						"required": true,
 						"schema": {
 							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/calculationMethods": {
+			"get": {
+				"operationId": "GetCalculationMethod",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ICalculationMethodGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show all available calculation methods",
+				"tags": [
+					"calculationMethods"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/calculationMethods/verbose": {
+			"get": {
+				"operationId": "GetCalculationMethodsVerbose",
+				"responses": {
+					"200": {
+						"description": "ICalculationMethodVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ICalculationMethodVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show all properties of available calculation methods",
+				"tags": [
+					"calculationMethods"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/calculationMethods/{identifier}": {
+			"get": {
+				"operationId": "GetCalculationMethodsIdentifier",
+				"responses": {
+					"200": {
+						"description": "ICalculationMethodIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ICalculationMethodIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show properties of a specified calculation methods",
+				"tags": [
+					"calculationMethods"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(1)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
 						}
 					}
 				]
@@ -947,6 +1206,9 @@
 		},
 		{
 			"name": "bounds"
+		},
+		{
+			"name": "calculationMethods"
 		}
 	]
 }
