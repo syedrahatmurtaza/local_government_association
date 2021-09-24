@@ -818,6 +818,64 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ClientApplication": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IClientApplicationGetResponse": {
+				"properties": {
+					"clientApplicationArray": {
+						"items": {
+							"$ref": "#/components/schemas/ClientApplication"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"clientApplicationArray"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IClientApplicationVerboseGetResponse": {
+				"properties": {
+					"clientApplicationArray": {
+						"items": {
+							"$ref": "#/components/schemas/ClientApplication"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"clientApplicationArray"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IClientApplicationIdentifierGetResponse": {
+				"properties": {
+					"clientApplication": {
+						"$ref": "#/components/schemas/ClientApplication"
+					}
+				},
+				"required": [
+					"clientApplication"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -1374,6 +1432,97 @@
 					}
 				]
 			}
+		},
+		"/v1/clientApplications": {
+			"get": {
+				"operationId": "GetClientApplication",
+				"responses": {
+					"200": {
+						"description": "IClientApplicationGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IClientApplicationGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show available client applications",
+				"tags": [
+					"clientApplications"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/clientApplications/verbose": {
+			"get": {
+				"operationId": "GetClientApplicationVerbose",
+				"responses": {
+					"200": {
+						"description": "IClientApplicationVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IClientApplicationVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show available client applications",
+				"tags": [
+					"clientApplications"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/clientApplications/{identifier}": {
+			"get": {
+				"operationId": "GetClientApplicationIdentifier",
+				"responses": {
+					"200": {
+						"description": "IClientApplicationIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IClientApplicationIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show details of specific client application",
+				"tags": [
+					"clientApplications"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(Inform)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -1400,6 +1549,9 @@
 		},
 		{
 			"name": "calculationPeriodTypeRules"
+		},
+		{
+			"name": "clientApplications"
 		}
 	]
 }

@@ -60,3 +60,16 @@ export const CALCULATION_METHODS_IDENTIFIER_TARGET_URL =
 // Calculation Period Type Rules
 export const CALCULATION_PERIOD_TYPE_RULES_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/calculationPeriodTypeRules'
+
+/***************************      Target API Client Application    *****************************************/
+// Client Application
+export const CLIENT_APPLICATION_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/clientApplications'
+
+// Client Application Verbose
+export const CLIENT_APPLICATION_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/clientApplications/verbose'
+
+// Client Application Identifier
+export const CLIENT_APPLICATION_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/clientApplications/'

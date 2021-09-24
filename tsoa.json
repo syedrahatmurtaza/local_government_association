@@ -28,7 +28,8 @@
       { "name": "area" },
       { "name": "bounds" },
       { "name": "calculationMethods" },
-      { "name": "calculationPeriodTypeRules" }
+      { "name": "calculationPeriodTypeRules" },
+      { "name": "clientApplications" }
     ]
   },
   "routes": {
