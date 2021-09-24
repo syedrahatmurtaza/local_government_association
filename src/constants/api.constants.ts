@@ -4,6 +4,7 @@ import { API_VERSION_1 } from './string.constants'
 // Base URL
 const BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION = 'https://webservices.esd.org.uk'
 
+/***************************      Target API Area Types     *****************************************/
 // Area Types
 export const AREA_TYPES_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/areaTypes'
@@ -23,3 +24,18 @@ export const AREA_TYPES_VERBOSE_TARGET_URL =
 // Area Types Identifer
 export const AREA_TYPES_IDENTIFER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/areaTypes'
+
+/***************************      Target API Area     *****************************************/
+// Area
+export const AREA_TARGET_URL = BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/areas'
+
+// Area Identifier
+export const AREA_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/areas/'
+
+// Area Identifier Bound
+export const AREA_IDENTIFIER_BOUNDS_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/areas/'
+export const SUB_BOUND_TARGET_URL = '/bounds'
+
+/***************************      Target API Bounds    *****************************************/

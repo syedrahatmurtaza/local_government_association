@@ -1,5 +1,6 @@
 import * as express from 'express'
 import { AreaTypesService } from '../services/informplus/areatypes.service'
+import { ApiKeyUtil } from '../utils/apikey.util'
 
 export function expressAuthentication(
   req: express.Request,
@@ -10,7 +11,7 @@ export function expressAuthentication(
     let applicationKey
     if (req.query && req.query.ApplicationKey) {
       applicationKey = req.query.ApplicationKey
-      AreaTypesService.setKeyValue(applicationKey.toString())
+      ApiKeyUtil.setKeyValue(applicationKey.toString())
     } else {
       return Promise.reject({ message: 'Missing ApplicationKey' })
     }

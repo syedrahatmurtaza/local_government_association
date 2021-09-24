@@ -1,2 +1,0 @@
-"middlewear": "express",
-"authenticationModule": "./routes/tsoaRoutes/authentication.ts"

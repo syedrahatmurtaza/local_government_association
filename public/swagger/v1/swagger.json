@@ -6,6 +6,69 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"AreaTypeSimple": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"isGroup": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"isGroup"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AreaArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"areaType": {
+						"$ref": "#/components/schemas/AreaTypeSimple"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"areaType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaGetResponse": {
+				"properties": {
+					"area-array": {
+						"items": {
+							"$ref": "#/components/schemas/AreaArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"area-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"AreaTypeArray": {
 				"properties": {
 					"identifier": {
@@ -30,6 +93,215 @@
 					"shortLabel",
 					"longLabel",
 					"isGroup"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AreaTypeIdentifer": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"isGroup": {
+						"type": "boolean"
+					},
+					"areaType": {
+						"$ref": "#/components/schemas/AreaTypeArray"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"isGroup",
+					"areaType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BoundingBox": {
+				"properties": {
+					"minLatitude": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxLatitude": {
+						"type": "number",
+						"format": "double"
+					},
+					"minLongitude": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxLongitude": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"minLatitude",
+					"maxLatitude",
+					"minLongitude",
+					"maxLongitude"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GovernedBy": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"governs": {
+						"$ref": "#/components/schemas/AreaTypeArray"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"governs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Type": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultComparisonGroup": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"isCustom": {
+						"type": "boolean"
+					},
+					"label": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/Type"
+					}
+				},
+				"required": [
+					"identifier",
+					"isCustom",
+					"label",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Area": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"areaType": {
+						"$ref": "#/components/schemas/AreaTypeIdentifer"
+					},
+					"boundingBox": {
+						"$ref": "#/components/schemas/BoundingBox"
+					},
+					"governedBy": {
+						"$ref": "#/components/schemas/GovernedBy"
+					},
+					"memberOf": {
+						"items": {
+							"$ref": "#/components/schemas/DefaultComparisonGroup"
+						},
+						"type": "array"
+					},
+					"ownerOf": {
+						"items": {
+							"$ref": "#/components/schemas/DefaultComparisonGroup"
+						},
+						"type": "array"
+					},
+					"defaultComparisonGroup": {
+						"$ref": "#/components/schemas/DefaultComparisonGroup"
+					},
+					"childOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeIdentifer"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"areaType",
+					"boundingBox",
+					"governedBy",
+					"memberOf",
+					"ownerOf",
+					"defaultComparisonGroup",
+					"childOf"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaIdentifierGetResponse": {
+				"properties": {
+					"area": {
+						"$ref": "#/components/schemas/Area"
+					}
+				},
+				"required": [
+					"area"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaIdentifierBoundGetResponse": {
+				"properties": {
+					"boundingBox": {
+						"$ref": "#/components/schemas/BoundingBox"
+					}
+				},
+				"required": [
+					"boundingBox"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -250,6 +522,181 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/v1/areas": {
+			"get": {
+				"operationId": "GetArea",
+				"responses": {
+					"200": {
+						"description": "IAreaGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Due to the large number of areas an empty call returns no results. Results are limited to first 500 - subsequent results can be found using the \"pageNumber\" attribute",
+				"summary": "Geographical areas used by LG Inform.",
+				"tags": [
+					"area"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Filter areas by comparison group and metric type's applicable area types",
+						"in": "query",
+						"name": "applicableToMetricType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter by area type and parent area",
+						"in": "query",
+						"name": "area",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "All areas of a particular area type",
+						"in": "query",
+						"name": "areaType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Show areas for a spceified latitude and longitude (alongside lon parameter)",
+						"in": "query",
+						"name": "lat",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Show areas for a spceified latitude and longitude (alongside lat parameter)",
+						"in": "query",
+						"name": "lon",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "If retrieving more than 20,000 areas or 500 shapes this can be used to return subsequent pages",
+						"in": "query",
+						"name": "pageNumber",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Number if items to be returned in each call up to a limit of 500, which is the default",
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The search text can be either a postcode, a postcode district (the first half of the postcode), or a text string. Defaults to local authorities whether the areaType parameter is not specified",
+						"in": "query",
+						"name": "searchText",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/areas/{identifier}": {
+			"get": {
+				"operationId": "GetAreaIdentifier",
+				"responses": {
+					"200": {
+						"description": "IAreaIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "The identifier is a GSS code, or comparison group identifier, used to find details about a particular geographical area",
+				"tags": [
+					"area"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(E09000010)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/areas/{identifier}/bounds": {
+			"get": {
+				"operationId": "GetAreaIdentifierBounds",
+				"responses": {
+					"200": {
+						"description": "IAreaIdentifierBoundGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaIdentifierBoundGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Co-ordinates for the minimum and maxim longitude and latitudes for a particular area or group of areas",
+				"tags": [
+					"area"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(E09000006)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
 		"/v1/areaTypes": {
 			"get": {
 				"operationId": "GetAreaTypes",
@@ -424,6 +871,7 @@
 				],
 				"parameters": [
 					{
+						"description": "(District)",
 						"in": "path",
 						"name": "identifier",
 						"required": true,
@@ -447,6 +895,9 @@
 		},
 		{
 			"name": "areaTypes"
+		},
+		{
+			"name": "area"
 		}
 	]
 }

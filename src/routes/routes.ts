@@ -3,6 +3,8 @@
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, HttpStatusCodeLiteral, TsoaResponse } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { AreaController } from './../controllers/area.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { AreaTypesController } from './../controllers/areatypes.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
@@ -12,6 +14,36 @@ import * as express from 'express';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
+    "AreaTypeSimple": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "isGroup": {"dataType":"boolean","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "AreaArray": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "shortLabel": {"dataType":"string","required":true},
+            "longLabel": {"dataType":"string","required":true},
+            "areaType": {"ref":"AreaTypeSimple","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IAreaGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "area-array": {"dataType":"array","array":{"dataType":"refObject","ref":"AreaArray"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "AreaTypeArray": {
         "dataType": "refObject",
         "properties": {
@@ -20,6 +52,95 @@ const models: TsoaRoute.Models = {
             "shortLabel": {"dataType":"string","required":true},
             "longLabel": {"dataType":"string","required":true},
             "isGroup": {"dataType":"boolean","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "AreaTypeIdentifer": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "shortLabel": {"dataType":"string","required":true},
+            "longLabel": {"dataType":"string","required":true},
+            "isGroup": {"dataType":"boolean","required":true},
+            "areaType": {"ref":"AreaTypeArray","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "BoundingBox": {
+        "dataType": "refObject",
+        "properties": {
+            "minLatitude": {"dataType":"double","required":true},
+            "maxLatitude": {"dataType":"double","required":true},
+            "minLongitude": {"dataType":"double","required":true},
+            "maxLongitude": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "GovernedBy": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "shortLabel": {"dataType":"string","required":true},
+            "governs": {"ref":"AreaTypeArray","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Type": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DefaultComparisonGroup": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "isCustom": {"dataType":"boolean","required":true},
+            "label": {"dataType":"string","required":true},
+            "type": {"ref":"Type","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Area": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "shortLabel": {"dataType":"string","required":true},
+            "longLabel": {"dataType":"string","required":true},
+            "areaType": {"ref":"AreaTypeIdentifer","required":true},
+            "boundingBox": {"ref":"BoundingBox","required":true},
+            "governedBy": {"ref":"GovernedBy","required":true},
+            "memberOf": {"dataType":"array","array":{"dataType":"refObject","ref":"DefaultComparisonGroup"},"required":true},
+            "ownerOf": {"dataType":"array","array":{"dataType":"refObject","ref":"DefaultComparisonGroup"},"required":true},
+            "defaultComparisonGroup": {"ref":"DefaultComparisonGroup","required":true},
+            "childOf": {"dataType":"array","array":{"dataType":"refObject","ref":"AreaTypeIdentifer"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IAreaIdentifierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "area": {"ref":"Area","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IAreaIdentifierBoundGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "boundingBox": {"ref":"BoundingBox","required":true},
         },
         "additionalProperties": false,
     },
@@ -109,6 +230,85 @@ export function RegisterRoutes(app: express.Router) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
+        app.get('/v1/areas',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function AreaController_getArea(request: any, response: any, next: any) {
+            const args = {
+                    applicableToMetricType: {"in":"query","name":"applicableToMetricType","dataType":"string"},
+                    area: {"in":"query","name":"area","dataType":"string"},
+                    areaType: {"in":"query","name":"areaType","dataType":"string"},
+                    lat: {"in":"query","name":"lat","dataType":"string"},
+                    lon: {"in":"query","name":"lon","dataType":"string"},
+                    pageNumber: {"in":"query","name":"pageNumber","dataType":"string"},
+                    pageSize: {"in":"query","name":"pageSize","dataType":"string"},
+                    searchText: {"in":"query","name":"searchText","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new AreaController();
+
+
+            const promise = controller.getArea.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/areas/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function AreaController_getAreaIdentifier(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new AreaController();
+
+
+            const promise = controller.getAreaIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/areas/:identifier/bounds',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function AreaController_getAreaIdentifierBounds(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new AreaController();
+
+
+            const promise = controller.getAreaIdentifierBounds.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         app.get('/v1/areaTypes',
             authenticateMiddleware([{"apiKeyAuth":[]}]),
 

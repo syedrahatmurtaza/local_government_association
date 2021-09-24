@@ -6,6 +6,7 @@ import {
   AREA_TYPES_TARGET_URL,
   AREA_TYPES_VERBOSE_TARGET_URL,
 } from '../../constants/api.constants'
+import { ApiKeyUtil } from '../../utils/apikey.util'
 
 export class AreaTypesService {
   instance: AxiosInstance
@@ -27,7 +28,7 @@ export class AreaTypesService {
 
   async getAreaTypes(params: any) {
     const response = await this.instance.get(
-      `${AREA_TYPES_TARGET_URL}?${this.key}${AreaTypesService.getKeyValue()}`,
+      `${AREA_TYPES_TARGET_URL}?${this.key}${ApiKeyUtil.getKeyValue()}`,
       {
         params: params,
       }
@@ -38,9 +39,7 @@ export class AreaTypesService {
 
   async getAreaTypesCurrent() {
     const response = await this.instance.get(
-      `${AREA_TYPES_CURRENT_TARGET_URL}?${
-        this.key
-      }${AreaTypesService.getKeyValue()}`
+      `${AREA_TYPES_CURRENT_TARGET_URL}?${this.key}${ApiKeyUtil.getKeyValue()}`
     )
 
     return response
@@ -50,7 +49,7 @@ export class AreaTypesService {
     const response = await this.instance.get(
       `${AREA_TYPES_FILTER_DATA_TARGET_URL}?${
         this.key
-      }${AreaTypesService.getKeyValue()}`,
+      }${ApiKeyUtil.getKeyValue()}`,
       {
         params: params,
       }
@@ -61,9 +60,7 @@ export class AreaTypesService {
 
   async getAreaTypesVerbose(params: any) {
     const response = await this.instance.get(
-      `${AREA_TYPES_VERBOSE_TARGET_URL}?${
-        this.key
-      }${AreaTypesService.getKeyValue()}`,
+      `${AREA_TYPES_VERBOSE_TARGET_URL}?${this.key}${ApiKeyUtil.getKeyValue()}`,
       {
         params: params,
       }
@@ -76,7 +73,7 @@ export class AreaTypesService {
     const response = await this.instance.get(
       `${AREA_TYPES_IDENTIFER_TARGET_URL}/${identifer}?${
         this.key
-      }${AreaTypesService.getKeyValue()}`
+      }${ApiKeyUtil.getKeyValue()}`
     )
 
     return response
