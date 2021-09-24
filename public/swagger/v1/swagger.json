@@ -1,0 +1,452 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"AreaTypeArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"isGroup": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"isGroup"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaTypeGetResponse": {
+				"properties": {
+					"areaType-array": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"areaType-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaTypeCurrentGetResponse": {
+				"properties": {
+					"areaType-array": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"areaType-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaTypeFilterDataGetResponse": {
+				"properties": {
+					"areaType-array": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"areaType-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AreaTypeArrayVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"isGroup": {
+						"type": "boolean"
+					},
+					"isMain": {
+						"type": "boolean"
+					},
+					"childOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					},
+					"parentOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					},
+					"memberOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					},
+					"sameAs": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"isGroup",
+					"isMain",
+					"childOf",
+					"parentOf",
+					"memberOf",
+					"sameAs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaTypeVerboseGetResponse": {
+				"properties": {
+					"areaType-array": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArrayVerbose"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"areaType-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AreaType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"isGroup": {
+						"type": "boolean"
+					},
+					"isMain": {
+						"type": "boolean"
+					},
+					"childOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					},
+					"parentOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					},
+					"memberOf": {
+						"items": {
+							"$ref": "#/components/schemas/AreaTypeArray"
+						},
+						"type": "array"
+					},
+					"sameAs": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"isGroup",
+					"isMain",
+					"childOf",
+					"parentOf",
+					"memberOf",
+					"sameAs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IAreaTypeIdentifierGetResponse": {
+				"properties": {
+					"areaType": {
+						"$ref": "#/components/schemas/AreaType"
+					}
+				},
+				"required": [
+					"areaType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"apiKeyAuth": {
+				"type": "apiKey",
+				"in": "query",
+				"name": "ApplicationKey"
+			}
+		}
+	},
+	"info": {
+		"title": "Local Government Association API",
+		"version": "v1",
+		"description": "Access to 1 billion+ metric values for English areas drawn from approximately 50 organisations publishing metrics that describe local authorities and their component areas. (DkxYeiqbmsGVMHOkfbbUGUEomQYkfaiiEJCBDEtC)",
+		"contact": {
+			"name": "Oraclo LTD",
+			"email": "admin@orcalo.co.uk",
+			"url": "https://orcalo.co.uk/"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/v1/areaTypes": {
+			"get": {
+				"operationId": "GetAreaTypes",
+				"responses": {
+					"200": {
+						"description": "IAreaTypeGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaTypeGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Returns area types, including detailed area types such as MBC and London borough.",
+				"tags": [
+					"areaTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Limit to the area types within a particular area (E09000006)",
+						"in": "query",
+						"name": "area",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/areaTypes/current": {
+			"get": {
+				"operationId": "GetAreaTypesCurrent",
+				"responses": {
+					"200": {
+						"description": "IAreaTypeCurrentGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaTypeCurrentGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Current user's area type. Requires a call using OAuth to retrieve data",
+				"tags": [
+					"areaTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/areaTypes/filter-data": {
+			"get": {
+				"operationId": "GetAreaTypesFilterData",
+				"responses": {
+					"200": {
+						"description": "IAreaTypeFilterDataGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaTypeFilterDataGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Area types which have data for a particular metric type and time period",
+				"tags": [
+					"areaTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Show which area levels have data for a particular metric type (3214)",
+						"in": "query",
+						"name": "metricType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Show which area levels have data for a particular time period (cal_2005)",
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/areaTypes/verbose": {
+			"get": {
+				"operationId": "GetAreaTypesVerbose",
+				"responses": {
+					"200": {
+						"description": "IAreaTypeVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaTypeVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "List of all details for all area types",
+				"tags": [
+					"areaTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Filter down to main official geographies",
+						"in": "query",
+						"name": "isMain",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/v1/areaTypes/{identifier}": {
+			"get": {
+				"operationId": "GetAreaTypesWithIdentifier",
+				"responses": {
+					"200": {
+						"description": "IAreaTypeIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IAreaTypeIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Details about a particular area type",
+				"tags": [
+					"areaTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	],
+	"tags": [
+		{
+			"name": "Inform Plus",
+			"description": "The API catalogue contains the following 1 Local Government Association (LGA) API"
+		},
+		{
+			"name": "areaTypes"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["./src/controllers/**/*.ts"],
+  "spec": {
+    "name": "Local Government Association API",
+    "version": "v1",
+    "contact": {
+      "name": "Oraclo LTD",
+      "email": "admin@orcalo.co.uk",
+      "url": "https://orcalo.co.uk/"
+    },
+    "outputDirectory": "public/swagger/v1/",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "ApplicationKey"
+      }
+    },
+    "tags": [
+      {
+        "name": "Inform Plus",
+        "description": "The API catalogue contains the following 1 Local Government Association (LGA) API"
+      },
+      { "name": "areaTypes" }
+    ]
+  },
+  "routes": {
+    "basePath": "/",
+    "routesDir": "./src/routes",
+    "middlewear": "express",
+    "authenticationModule": "./src/middlewears/authentication.ts"
+  }
+}
