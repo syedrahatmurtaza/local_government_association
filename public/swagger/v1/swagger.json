@@ -876,6 +876,251 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ComparisonGroup": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"isCustom": {
+						"type": "boolean"
+					},
+					"label": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/Type"
+					}
+				},
+				"required": [
+					"identifier",
+					"isCustom",
+					"label",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IComparisonGroupsGetResponse": {
+				"properties": {
+					"comparisonGroup-array": {
+						"items": {
+							"$ref": "#/components/schemas/ComparisonGroup"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"comparisonGroup-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Member": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"areaType": {
+						"$ref": "#/components/schemas/Member"
+					},
+					"isGroup": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Tier": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"isCustom": {
+						"type": "boolean"
+					},
+					"label": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/Type"
+					}
+				},
+				"required": [
+					"identifier",
+					"isCustom",
+					"label",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ComparisonGroupIdentifier": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"isCustom": {
+						"type": "boolean"
+					},
+					"label": {
+						"type": "string"
+					},
+					"members": {
+						"items": {
+							"$ref": "#/components/schemas/Member"
+						},
+						"type": "array"
+					},
+					"owners": {
+						"items": {
+							"$ref": "#/components/schemas/Member"
+						},
+						"type": "array"
+					},
+					"isMain": {
+						"type": "boolean"
+					},
+					"isHidden": {
+						"type": "boolean"
+					},
+					"bottomTier": {
+						"$ref": "#/components/schemas/Tier"
+					},
+					"topTier": {
+						"$ref": "#/components/schemas/Tier"
+					},
+					"type": {
+						"$ref": "#/components/schemas/Type"
+					}
+				},
+				"required": [
+					"identifier",
+					"isCustom",
+					"label",
+					"members",
+					"owners",
+					"isMain",
+					"isHidden",
+					"bottomTier",
+					"topTier",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IComparisonGroupsIdentifierGetResponse": {
+				"properties": {
+					"comparisonGroup": {
+						"$ref": "#/components/schemas/ComparisonGroupIdentifier"
+					}
+				},
+				"required": [
+					"comparisonGroup"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IComparisonGroupsIdentifierBoundsGetResponse": {
+				"properties": {
+					"boundingBox": {
+						"$ref": "#/components/schemas/BoundingBox"
+					}
+				},
+				"required": [
+					"boundingBox"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ComparisonGroupTypeArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IComparisonGroupTypesGetResponse": {
+				"properties": {
+					"comparisonGroupType-array": {
+						"items": {
+							"$ref": "#/components/schemas/ComparisonGroupTypeArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"comparisonGroupType-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IComparisonGroupTypesVerboseGetResponse": {
+				"properties": {
+					"comparisonGroupType-array": {
+						"items": {
+							"$ref": "#/components/schemas/ComparisonGroupTypeArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"comparisonGroupType-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ComparisonGroupType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IComparisonGroupTypesIdentifierGetResponse": {
+				"properties": {
+					"comparisonGroupType": {
+						"$ref": "#/components/schemas/ComparisonGroupType"
+					}
+				},
+				"required": [
+					"comparisonGroupType"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -1523,6 +1768,254 @@
 					}
 				]
 			}
+		},
+		"/v1/comparisonGroups": {
+			"get": {
+				"operationId": "GetComparisonGroup",
+				"responses": {
+					"200": {
+						"description": "IComparisonGroupsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IComparisonGroupsGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Comparison groups are area groupings of different types, such as all district local authorities, or all fire organisations in England. Without parameters, all groups, excluding custom groups, are returned",
+				"tags": [
+					"comparisonGroups"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Only the main comparison groups, so includes groupings by authority type, but excludes things like groupings by near neighbours",
+						"in": "query",
+						"name": "mainOnly",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Groups of which the area is a member, but not necessarily an owner. If area 1 is a near neighbour of area 2, area 1 would be a member of the near neighbour group (along with the other near neighbours) and area 2 would be the owner of the group",
+						"in": "query",
+						"name": "memberArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Group which the area owns, but is not necessairly a member. An area is generally the owner of a group if the group is a main group, such as all local authorities, or is the area to which a group relates, such as near neighbours of an area",
+						"in": "query",
+						"name": "ownerArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Comparison groups of a specified comparison group type for a specified area. For example, which Experian Mosaic near neighbours a particular area has",
+						"in": "query",
+						"name": "type",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/comparisonGroups/{identifier}": {
+			"get": {
+				"operationId": "GetComparisonGroupIdentifier",
+				"responses": {
+					"200": {
+						"description": "IComparisonGroupsIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IComparisonGroupsIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Returns the details for a particular comparison group",
+				"tags": [
+					"comparisonGroups"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(AllLAInRegion_London)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/comparisonGroups/{identifier}/bounds": {
+			"get": {
+				"operationId": "GetComparisonGroupIdentifierBounds",
+				"responses": {
+					"200": {
+						"description": "IComparisonGroupsIdentifierBoundsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IComparisonGroupsIdentifierBoundsGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Co-ordinates for the minimum and maxim longitude and latitudes for a particular comparison group",
+				"tags": [
+					"comparisonGroups"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(Core_English_Cities)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/comparisonGroupTypes": {
+			"get": {
+				"operationId": "GetComparisonGroupTypes",
+				"responses": {
+					"200": {
+						"description": "IComparisonGroupTypesGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IComparisonGroupTypesGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show types of comparison group available",
+				"tags": [
+					"comparisonGroupTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Filter groups by area membership",
+						"in": "query",
+						"name": "memberArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter groups by a specific area owner",
+						"in": "query",
+						"name": "ownerArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/comparisonGroupTypes/verbose": {
+			"get": {
+				"operationId": "GetComparisonGroupTypesVerbose",
+				"responses": {
+					"200": {
+						"description": "IComparisonGroupTypesVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IComparisonGroupTypesVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show full details of comparison group types available",
+				"tags": [
+					"comparisonGroupTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/comparisonGroupTypes/{identifier}": {
+			"get": {
+				"operationId": "GetComparisonGroupTypesIdentifier",
+				"responses": {
+					"200": {
+						"description": "IComparisonGroupTypesIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IComparisonGroupTypesIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show details of a specified comparison group",
+				"tags": [
+					"comparisonGroupTypes"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(AllLaInRegion)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -1552,6 +2045,12 @@
 		},
 		{
 			"name": "clientApplications"
+		},
+		{
+			"name": "comparisonGroupTypes"
+		},
+		{
+			"name": "comparisonGroups"
 		}
 	]
 }

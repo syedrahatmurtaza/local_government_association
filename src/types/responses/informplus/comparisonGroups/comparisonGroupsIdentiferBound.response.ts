@@ -1,5 +1,5 @@
 import { BoundingBox } from '../areas/areaIdentifier.response'
 
-export interface IBoundsGetResponse {
+export interface IComparisonGroupsIdentifierBoundsGetResponse {
   boundingBox: BoundingBox
 }

@@ -1,8 +1,8 @@
 import { response } from 'express'
 import { AreaService } from '../services/informplus/area.service'
-import { IAreaGetResponse } from '../types/responses/informplus/areas/area.response'
-import { IAreaIdentifierGetResponse } from '../types/responses/informplus/areas/areaidentifier.response'
-import { IAreaIdentifierBoundGetResponse } from '../types/responses/informplus/areas/areaidentifierbound.response'
+import { IAreaGetResponse } from '../types/responses/informPlus/areas/area.response'
+import { IAreaIdentifierGetResponse } from '../types/responses/informPlus/areas/areaIdentifier.response'
+import { IAreaIdentifierBoundGetResponse } from '../types/responses/informPlus/areas/areaIdentifierBound.response'
 
 export class AreaRepository {
   constructor() {}

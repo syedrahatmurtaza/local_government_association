@@ -6,7 +6,7 @@ import {
   AREA_TYPES_TARGET_URL,
   AREA_TYPES_VERBOSE_TARGET_URL,
 } from '../../constants/api.constants'
-import { ApiKeyUtil } from '../../utils/apikey.util'
+import { ApiKeyUtil } from '../../utils/apiKey.util'
 
 export class AreaTypesService {
   instance: AxiosInstance

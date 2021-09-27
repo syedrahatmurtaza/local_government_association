@@ -1,14 +1,13 @@
 import axios, { AxiosInstance } from 'axios'
+
 import {
-  BOUND_TARGET_URL,
-  CALCULATION_PERIOD_TYPE_RULES_TARGET_URL,
-  CLIENT_APPLICATION_IDENTIFIER_TARGET_URL,
-  CLIENT_APPLICATION_TARGET_URL,
-  CLIENT_APPLICATION_VERBOSE_TARGET_URL,
+  COMPARISON_GROUP_TYPES_IDENTIFIER_TARGET_URL,
+  COMPARISON_GROUP_TYPES_TARGET_URL,
+  COMPARISON_GROUP_TYPES_VERBOSE_TARGET_URL,
 } from '../../constants/api.constants'
 import { ApiKeyUtil } from '../../utils/apiKey.util'
 
-export class ClientApplicationService {
+export class ComparisonGroupTypesService {
   instance: AxiosInstance
   key: string
 
@@ -17,17 +16,20 @@ export class ClientApplicationService {
     this.key = 'ApplicationKey='
   }
 
-  async getClientApplication() {
+  async getComparisonGroupTypes(params: any) {
     const response = await this.instance.get(
-      `${CLIENT_APPLICATION_TARGET_URL}?${this.key}${ApiKeyUtil.getKeyValue()}`
+      `${COMPARISON_GROUP_TYPES_TARGET_URL}?${
+        this.key
+      }${ApiKeyUtil.getKeyValue()}`,
+      { params: params }
     )
 
     return response
   }
 
-  async getClientApplicationVerbose() {
+  async getComparisonGroupTypesVerbose() {
     const response = await this.instance.get(
-      `${CLIENT_APPLICATION_VERBOSE_TARGET_URL}?${
+      `${COMPARISON_GROUP_TYPES_VERBOSE_TARGET_URL}?${
         this.key
       }${ApiKeyUtil.getKeyValue()}`
     )
@@ -35,9 +37,9 @@ export class ClientApplicationService {
     return response
   }
 
-  async getClientApplicationIdentifier(identifier: string) {
+  async getComparisonGroupTypesIdentifier(identifier: string) {
     const response = await this.instance.get(
-      `${CLIENT_APPLICATION_IDENTIFIER_TARGET_URL + identifier}?${
+      `${COMPARISON_GROUP_TYPES_IDENTIFIER_TARGET_URL + identifier}?${
         this.key
       }${ApiKeyUtil.getKeyValue()}`
     )

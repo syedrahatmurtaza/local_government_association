@@ -1,5 +1,5 @@
 import { BoundService } from '../services/informplus/bound.service'
-import { IBoundsGetResponse } from '../types/responses/informplus/bounds/bound.response'
+import { IBoundsGetResponse } from '../types/responses/informPlus/bounds/bound.response'
 
 export class BoundRepository {
   constructor() {}

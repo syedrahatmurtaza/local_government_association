@@ -1,6 +1,7 @@
 import { Controller, Get, Query, Route, Security, Tags } from '@tsoa/runtime'
-import { CalculationPeriodTypeRulesRepository } from '../repositories/calculationperiodtyperules.repository'
-import { ICalculationPeriodTypeRulesGetResponse } from '../types/responses/informplus/calculationperiodtype/calculationperiodtyperule.response'
+import { CalculationPeriodTypeRulesRepository } from '../repositories/calculationPeriodTypeRules.repository'
+
+import { ICalculationPeriodTypeRulesGetResponse } from '../types/responses/informPlus/calculationPeriodType/calculationPeriodTypeRule.response'
 
 @Route('v1/calculationPeriodTypeRules')
 @Tags('calculationPeriodTypeRules')

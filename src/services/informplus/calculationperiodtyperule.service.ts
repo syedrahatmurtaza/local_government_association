@@ -3,7 +3,7 @@ import {
   BOUND_TARGET_URL,
   CALCULATION_PERIOD_TYPE_RULES_TARGET_URL,
 } from '../../constants/api.constants'
-import { ApiKeyUtil } from '../../utils/apikey.util'
+import { ApiKeyUtil } from '../../utils/apiKey.util'
 
 export class CalculationPeriodTypeRulesService {
   instance: AxiosInstance

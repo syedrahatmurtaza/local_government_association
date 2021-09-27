@@ -73,3 +73,40 @@ export const CLIENT_APPLICATION_VERBOSE_TARGET_URL =
 // Client Application Identifier
 export const CLIENT_APPLICATION_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/clientApplications/'
+
+/***************************      Target API Comparison Group Types    *****************************************/
+// Comparison Group Types
+export const COMPARISON_GROUP_TYPES_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/comparisonGroupTypes'
+
+// Comparison Group Types Verbose
+export const COMPARISON_GROUP_TYPES_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/comparisonGroupTypes/verbose'
+
+// Comparison Group Types Identifier
+export const COMPARISON_GROUP_TYPES_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/comparisonGroupTypes/'
+
+/***************************      Target API Comparison Group     *****************************************/
+// Comparison Group
+export const COMPARISON_GROUP_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/comparisonGroups'
+
+// Comparison Group Current
+export const COMPARISON_GROUP_CURRENT_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/comparisonGroups/current'
+
+// Comparison Group Custom
+// Comparison Group Custom Create
+// Comparison Group Custom Create Identifier
+// Comparison Group Custom Create Identifier Delete
+// Comparison Group Custom Create Identifier Update
+
+// Comparison Group Identifier
+export const COMPARISON_GROUP_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/comparisonGroups/'
+
+// Comparison Group Identifier Bounds
+export const COMPARISON_GROUP_IDENTIFIER_BOUNDS_TARGET_PATH = '/bounds'
+
+// Comparison Group Identifier Shape Returns XML

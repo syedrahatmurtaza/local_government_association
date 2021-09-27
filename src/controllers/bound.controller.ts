@@ -1,6 +1,6 @@
 import { Controller, Get, Query, Route, Security, Tags } from '@tsoa/runtime'
 import { BoundRepository } from '../repositories/bound.repository'
-import { IBoundsGetResponse } from '../types/responses/informplus/bounds/bound.response'
+import { IBoundsGetResponse } from '../types/responses/informPlus/bounds/bound.response'
 
 @Route('v1/bounds')
 @Tags('bounds')

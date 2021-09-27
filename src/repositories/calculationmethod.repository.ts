@@ -1,7 +1,7 @@
-import { CalculationMethodsService } from '../services/informplus/calculationmethods.service'
-import { ICalculationMethodIdentifierGetResponse } from '../types/responses/informplus/calculationmethods/calculationmethodidentifier.response'
-import { ICalculationMethodGetResponse } from '../types/responses/informplus/calculationmethods/calculationmethods.response'
-import { ICalculationMethodVerboseGetResponse } from '../types/responses/informplus/calculationmethods/calculationmethodverbose.response'
+import { CalculationMethodsService } from '../services/informplus/calculationMethods.service'
+import { ICalculationMethodIdentifierGetResponse } from '../types/responses/informPlus/calculationMethods/calculationMethodIdentifier.response'
+import { ICalculationMethodGetResponse } from '../types/responses/informPlus/calculationMethods/calculationMethods.response'
+import { ICalculationMethodVerboseGetResponse } from '../types/responses/informPlus/calculationMethods/calculationMethodVerbose.response'
 
 export class CalculationMethodRepository {
   constructor() {}

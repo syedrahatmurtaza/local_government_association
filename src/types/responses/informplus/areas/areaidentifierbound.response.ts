@@ -1,4 +1,4 @@
-import { BoundingBox } from './areaidentifier.response'
+import { BoundingBox } from './areaIdentifier.response'
 
 export interface IAreaIdentifierBoundGetResponse {
   boundingBox: BoundingBox

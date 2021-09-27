@@ -4,7 +4,7 @@ import {
   CALCULATION_METHODS_TARGET_URL,
   CALCULATION_METHODS_VERBOSE_TARGET_URL,
 } from '../../constants/api.constants'
-import { ApiKeyUtil } from '../../utils/apikey.util'
+import { ApiKeyUtil } from '../../utils/apiKey.util'
 
 export class CalculationMethodsService {
   instance: AxiosInstance

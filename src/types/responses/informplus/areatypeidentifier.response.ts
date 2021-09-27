@@ -1,4 +1,4 @@
-import { AreaTypeArray } from './areatypes.response'
+import { AreaTypeArray } from './areaTypes.response'
 
 export interface IAreaTypeIdentifierGetResponse {
   areaType: AreaType

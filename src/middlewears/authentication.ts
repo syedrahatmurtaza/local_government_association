@@ -1,6 +1,6 @@
 import * as express from 'express'
-import { AreaTypesService } from '../services/informplus/areatypes.service'
-import { ApiKeyUtil } from '../utils/apikey.util'
+import { AreaTypesService } from '../services/informplus/areaTypes.service'
+import { ApiKeyUtil } from '../utils/apiKey.util'
 
 export function expressAuthentication(
   req: express.Request,

@@ -1,5 +1,5 @@
-import { CalculationPeriodTypeRulesService } from '../services/informplus/calculationperiodtyperule.service'
-import { ICalculationPeriodTypeRulesGetResponse } from '../types/responses/informplus/calculationperiodtype/calculationperiodtyperule.response'
+import { CalculationPeriodTypeRulesService } from '../services/informplus/calculationPeriodTypeRule.service'
+import { ICalculationPeriodTypeRulesGetResponse } from '../types/responses/informPlus/calculationPeriodType/calculationPeriodTypeRule.response'
 
 export class CalculationPeriodTypeRulesRepository {
   constructor() {}

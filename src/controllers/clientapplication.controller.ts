@@ -1,8 +1,8 @@
 import { Controller, Get, Path, Route, Security, Tags } from '@tsoa/runtime'
-import { ClientApplicationRepository } from '../repositories/clientapplication.repository'
-import { IClientApplicationGetResponse } from '../types/responses/informplus/clientapplication/clientapplication.response'
-import { IClientApplicationIdentifierGetResponse } from '../types/responses/informplus/clientapplication/clientapplicationidentifier.response'
-import { IClientApplicationVerboseGetResponse } from '../types/responses/informplus/clientapplication/clientapplicationverbose.response'
+import { ClientApplicationRepository } from '../repositories/clientApplication.repository'
+import { IClientApplicationGetResponse } from '../types/responses/informPlus/clientApplication/clientApplication.response'
+import { IClientApplicationIdentifierGetResponse } from '../types/responses/informPlus/clientApplication/clientApplicationIdentifier.response'
+import { IClientApplicationVerboseGetResponse } from '../types/responses/informPlus/clientApplication/clientApplicationVerbose.response'
 
 @Route('v1/clientApplications')
 @Tags('clientApplications')

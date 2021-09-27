@@ -1,7 +1,7 @@
-import { ClientApplicationService } from '../services/informplus/clientapplication.service'
-import { IClientApplicationGetResponse } from '../types/responses/informplus/clientapplication/clientapplication.response'
-import { IClientApplicationIdentifierGetResponse } from '../types/responses/informplus/clientapplication/clientapplicationidentifier.response'
-import { IClientApplicationVerboseGetResponse } from '../types/responses/informplus/clientapplication/clientapplicationverbose.response'
+import { ClientApplicationService } from '../services/informplus/clientApplication.service'
+import { IClientApplicationGetResponse } from '../types/responses/informPlus/clientApplication/clientApplication.response'
+import { IClientApplicationIdentifierGetResponse } from '../types/responses/informPlus/clientApplication/clientApplicationIdentifier.response'
+import { IClientApplicationVerboseGetResponse } from '../types/responses/informPlus/clientApplication/clientApplicationVerbose.response'
 
 export class ClientApplicationRepository {
   constructor() {}

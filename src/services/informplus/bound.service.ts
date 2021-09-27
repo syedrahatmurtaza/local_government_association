@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 import { BOUND_TARGET_URL } from '../../constants/api.constants'
-import { ApiKeyUtil } from '../../utils/apikey.util'
+import { ApiKeyUtil } from '../../utils/apiKey.util'
 
 export class BoundService {
   instance: AxiosInstance

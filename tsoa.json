@@ -29,7 +29,9 @@
       { "name": "bounds" },
       { "name": "calculationMethods" },
       { "name": "calculationPeriodTypeRules" },
-      { "name": "clientApplications" }
+      { "name": "clientApplications" },
+      { "name": "comparisonGroupTypes" },
+      { "name": "comparisonGroups" }
     ]
   },
   "routes": {

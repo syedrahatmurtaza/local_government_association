@@ -1,9 +1,9 @@
-import { AreaTypesService } from '../services/informplus/areatypes.service'
-import { IAreaTypeIdentifierGetResponse } from '../types/responses/informplus/areatypeidentifier.response'
-import { IAreaTypeGetResponse } from '../types/responses/informplus/areatypes.response'
-import { IAreaTypeCurrentGetResponse } from '../types/responses/informplus/areatypescurrent.response'
-import { IAreaTypeFilterDataGetResponse } from '../types/responses/informplus/areatypesfilterdata.response'
-import { IAreaTypeVerboseGetResponse } from '../types/responses/informplus/areatypesverbose.response'
+import { AreaTypesService } from '../services/informplus/areaTypes.service'
+import { IAreaTypeIdentifierGetResponse } from '../types/responses/informPlus/areaTypeIdentifier.response'
+import { IAreaTypeGetResponse } from '../types/responses/informPlus/areaTypes.response'
+import { IAreaTypeCurrentGetResponse } from '../types/responses/informPlus/areaTypesCurrent.response'
+import { IAreaTypeFilterDataGetResponse } from '../types/responses/informPlus/areatypesFilterData.response'
+import { IAreaTypeVerboseGetResponse } from '../types/responses/informPlus/areaTypesVerbose.response'
 
 export class AreaTypesRepository {
   constructor() {}

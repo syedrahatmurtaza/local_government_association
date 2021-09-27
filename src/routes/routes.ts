@@ -5,15 +5,19 @@ import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, H
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { AreaController } from './../controllers/area.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { AreaTypesController } from './../controllers/areatypes.controller';
+import { AreaTypesController } from './../controllers/areaTypes.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { BoundController } from './../controllers/bound.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { CalculationMethodController } from './../controllers/calculationmethod.controller';
+import { CalculationMethodController } from './../controllers/calculationMethod.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { CalculationPeriodTypeRulesController } from './../controllers/calculationperiodtyperules.controller';
+import { CalculationPeriodTypeRulesController } from './../controllers/calculationPeriodTypeRules.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { ClientApplicationController } from './../controllers/clientapplication.controller';
+import { ClientApplicationController } from './../controllers/clientApplication.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { ComparisonGroupsController } from './../controllers/comparisonGroups.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { ComparisonGroupTypesController } from './../controllers/comparisonGroupTypes.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -387,6 +391,124 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "clientApplication": {"ref":"ClientApplication","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ComparisonGroup": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "isCustom": {"dataType":"boolean","required":true},
+            "label": {"dataType":"string","required":true},
+            "type": {"ref":"Type","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IComparisonGroupsGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "comparisonGroup-array": {"dataType":"array","array":{"dataType":"refObject","ref":"ComparisonGroup"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Member": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "shortLabel": {"dataType":"string","required":true},
+            "longLabel": {"dataType":"string","required":true},
+            "areaType": {"ref":"Member"},
+            "isGroup": {"dataType":"boolean"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Tier": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "isCustom": {"dataType":"boolean","required":true},
+            "label": {"dataType":"string","required":true},
+            "type": {"ref":"Type","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ComparisonGroupIdentifier": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "isCustom": {"dataType":"boolean","required":true},
+            "label": {"dataType":"string","required":true},
+            "members": {"dataType":"array","array":{"dataType":"refObject","ref":"Member"},"required":true},
+            "owners": {"dataType":"array","array":{"dataType":"refObject","ref":"Member"},"required":true},
+            "isMain": {"dataType":"boolean","required":true},
+            "isHidden": {"dataType":"boolean","required":true},
+            "bottomTier": {"ref":"Tier","required":true},
+            "topTier": {"ref":"Tier","required":true},
+            "type": {"ref":"Type","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IComparisonGroupsIdentifierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "comparisonGroup": {"ref":"ComparisonGroupIdentifier","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IComparisonGroupsIdentifierBoundsGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "boundingBox": {"ref":"BoundingBox","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ComparisonGroupTypeArray": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IComparisonGroupTypesGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "comparisonGroupType-array": {"dataType":"array","array":{"dataType":"refObject","ref":"ComparisonGroupTypeArray"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IComparisonGroupTypesVerboseGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "comparisonGroupType-array": {"dataType":"array","array":{"dataType":"refObject","ref":"ComparisonGroupTypeArray"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ComparisonGroupType": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IComparisonGroupTypesIdentifierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "comparisonGroupType": {"ref":"ComparisonGroupType","required":true},
         },
         "additionalProperties": false,
     },
@@ -786,6 +908,153 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getClientApplicationIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/comparisonGroups',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ComparisonGroupsController_getComparisonGroup(request: any, response: any, next: any) {
+            const args = {
+                    mainOnly: {"in":"query","name":"mainOnly","dataType":"string"},
+                    memberArea: {"in":"query","name":"memberArea","dataType":"string"},
+                    ownerArea: {"in":"query","name":"ownerArea","dataType":"string"},
+                    type: {"in":"query","name":"type","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ComparisonGroupsController();
+
+
+            const promise = controller.getComparisonGroup.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/comparisonGroups/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ComparisonGroupsController_getComparisonGroupIdentifier(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ComparisonGroupsController();
+
+
+            const promise = controller.getComparisonGroupIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/comparisonGroups/:identifier/bounds',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ComparisonGroupsController_getComparisonGroupIdentifierBounds(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ComparisonGroupsController();
+
+
+            const promise = controller.getComparisonGroupIdentifierBounds.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/comparisonGroupTypes',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ComparisonGroupTypesController_getComparisonGroupTypes(request: any, response: any, next: any) {
+            const args = {
+                    memberArea: {"in":"query","name":"memberArea","dataType":"string"},
+                    ownerArea: {"in":"query","name":"ownerArea","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ComparisonGroupTypesController();
+
+
+            const promise = controller.getComparisonGroupTypes.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/comparisonGroupTypes/verbose',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ComparisonGroupTypesController_getComparisonGroupTypesVerbose(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ComparisonGroupTypesController();
+
+
+            const promise = controller.getComparisonGroupTypesVerbose.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/comparisonGroupTypes/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ComparisonGroupTypesController_getComparisonGroupTypesIdentifier(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ComparisonGroupTypesController();
+
+
+            const promise = controller.getComparisonGroupTypesIdentifier.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

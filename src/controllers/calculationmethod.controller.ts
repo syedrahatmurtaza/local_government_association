@@ -1,8 +1,9 @@
 import { Controller, Get, Path, Route, Security, Tags } from '@tsoa/runtime'
-import { CalculationMethodRepository } from '../repositories/calculationmethod.repository'
-import { ICalculationMethodIdentifierGetResponse } from '../types/responses/informplus/calculationmethods/calculationmethodidentifier.response'
-import { ICalculationMethodGetResponse } from '../types/responses/informplus/calculationmethods/calculationmethods.response'
-import { ICalculationMethodVerboseGetResponse } from '../types/responses/informplus/calculationmethods/calculationmethodverbose.response'
+import { CalculationMethodRepository } from '../repositories/calculationMethod.repository'
+
+import { ICalculationMethodIdentifierGetResponse } from '../types/responses/informPlus/calculationMethods/calculationMethodIdentifier.response'
+import { ICalculationMethodGetResponse } from '../types/responses/informPlus/calculationMethods/calculationMethods.response'
+import { ICalculationMethodVerboseGetResponse } from '../types/responses/informPlus/calculationMethods/calculationMethodVerbose.response'
 
 @Route('v1/calculationMethods')
 @Tags('calculationMethods')
