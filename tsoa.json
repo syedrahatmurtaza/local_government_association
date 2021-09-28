@@ -31,7 +31,8 @@
       { "name": "calculationPeriodTypeRules" },
       { "name": "clientApplications" },
       { "name": "comparisonGroupTypes" },
-      { "name": "comparisonGroups" }
+      { "name": "comparisonGroups" },
+      { "name": "data" }
     ]
   },
   "routes": {

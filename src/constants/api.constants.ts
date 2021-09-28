@@ -110,3 +110,15 @@ export const COMPARISON_GROUP_IDENTIFIER_TARGET_URL =
 export const COMPARISON_GROUP_IDENTIFIER_BOUNDS_TARGET_PATH = '/bounds'
 
 // Comparison Group Identifier Shape Returns XML
+
+/***************************      Target API Data     *****************************************/
+// Data
+export const DATA_TARGET_URL = BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/data'
+
+// Data Regression
+export const DATA_REGRESSION_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/data/regression'
+
+// Data Table
+export const DATA_TABLE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/data.table'

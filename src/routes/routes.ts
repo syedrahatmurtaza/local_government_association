@@ -18,6 +18,8 @@ import { ClientApplicationController } from './../controllers/clientApplication.
 import { ComparisonGroupsController } from './../controllers/comparisonGroups.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { ComparisonGroupTypesController } from './../controllers/comparisonGroupTypes.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { DataController } from './../controllers/data.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -509,6 +511,163 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "comparisonGroupType": {"ref":"ComparisonGroupType","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Metadata": {
+        "dataType": "refObject",
+        "properties": {
+            "columnGrouping": {"dataType":"array","array":{"dataType":"string"},"required":true},
+            "rowGrouping": {"dataType":"array","array":{"dataType":"any"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Areadata": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "altLabel": {"dataType":"string"},
+            "isSummary": {"dataType":"boolean","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Column": {
+        "dataType": "refObject",
+        "properties": {
+            "area": {"ref":"Areadata","required":true},
+            "metricType": {"ref":"Areadata","required":true},
+            "period": {"ref":"Areadata","required":true},
+            "valueType": {"ref":"Areadata","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Value": {
+        "dataType": "refObject",
+        "properties": {
+            "source": {"dataType":"double","required":true},
+            "value": {"dataType":"double","required":true},
+            "formatted": {"dataType":"string","required":true},
+            "format": {"dataType":"string","required":true},
+            "publicationStatus": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Row": {
+        "dataType": "refObject",
+        "properties": {
+            "values": {"dataType":"array","array":{"dataType":"refObject","ref":"Value"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDataGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "metadata": {"ref":"Metadata","required":true},
+            "columns": {"dataType":"array","array":{"dataType":"refObject","ref":"Column"},"required":true},
+            "rows": {"dataType":"array","array":{"dataType":"refObject","ref":"Row"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "MetadataRegression": {
+        "dataType": "refObject",
+        "properties": {
+            "columnGrouping": {"dataType":"array","array":{"dataType":"string"},"required":true},
+            "rowGrouping": {"dataType":"array","array":{"dataType":"string"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "MetricType": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "altLabel": {"dataType":"string"},
+            "isSummary": {"dataType":"boolean","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ColumnRegression": {
+        "dataType": "refObject",
+        "properties": {
+            "metricType": {"ref":"MetricType","required":true},
+            "period": {"ref":"MetricType","required":true},
+            "valueType": {"ref":"MetricType","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "RowRegression": {
+        "dataType": "refObject",
+        "properties": {
+            "area": {"ref":"MetricType","required":true},
+            "values": {"dataType":"array","array":{"dataType":"refObject","ref":"Value"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Coordinate": {
+        "dataType": "refObject",
+        "properties": {
+            "x": {"dataType":"double","required":true},
+            "y": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Regression": {
+        "dataType": "refObject",
+        "properties": {
+            "coordinates": {"dataType":"array","array":{"dataType":"refObject","ref":"Coordinate"},"required":true},
+            "rSquare": {"dataType":"double","required":true},
+            "rSquareLog": {"dataType":"double"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDataRegressionGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "metadata": {"ref":"MetadataRegression","required":true},
+            "columns": {"dataType":"array","array":{"dataType":"refObject","ref":"ColumnRegression"},"required":true},
+            "rows": {"dataType":"array","array":{"dataType":"refObject","ref":"RowRegression"},"required":true},
+            "regressions": {"dataType":"array","array":{"dataType":"refObject","ref":"Regression"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDataTableGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "metricTypeIdentifier": {"dataType":"string","required":true},
+            "metricTypeLabel": {"dataType":"string","required":true},
+            "metricTypeAltLabel": {"dataType":"string","required":true},
+            "metricTypeIsSummary": {"dataType":"string","required":true},
+            "areaIdentifier": {"dataType":"string","required":true},
+            "areaLabel": {"dataType":"string","required":true},
+            "areaAltLabel": {"dataType":"string","required":true},
+            "areaIsSummary": {"dataType":"string","required":true},
+            "periodIdentifier": {"dataType":"string","required":true},
+            "periodLabel": {"dataType":"string","required":true},
+            "periodAltLabel": {"dataType":"string","required":true},
+            "periodIsSummary": {"dataType":"string","required":true},
+            "valueTypeIdentifier": {"dataType":"string","required":true},
+            "valueTypeLabel": {"dataType":"string","required":true},
+            "valueTypeIsSummary": {"dataType":"string","required":true},
+            "value": {"dataType":"double","required":true},
+            "source": {"dataType":"double","required":true},
+            "formatted": {"dataType":"string","required":true},
+            "format": {"dataType":"string","required":true},
+            "publicationStatus": {"dataType":"string","required":true},
         },
         "additionalProperties": false,
     },
@@ -1055,6 +1214,98 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getComparisonGroupTypesIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/data',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DataController_getData(request: any, response: any, next: any) {
+            const args = {
+                    metricType: {"in":"query","name":"metricType","required":true,"dataType":"string"},
+                    period: {"in":"query","name":"period","required":true,"dataType":"string"},
+                    area: {"in":"query","name":"area","required":true,"dataType":"string"},
+                    columnGrouping: {"in":"query","name":"columnGrouping","dataType":"string"},
+                    headerCellType: {"in":"query","name":"headerCellType","dataType":"string"},
+                    includeMissing: {"in":"query","name":"includeMissing","dataType":"string"},
+                    outputType: {"in":"query","name":"outputType","dataType":"string"},
+                    rowGrouping: {"in":"query","name":"rowGrouping","dataType":"string"},
+                    summary: {"in":"query","name":"summary","dataType":"string"},
+                    valueType: {"in":"query","name":"valueType","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DataController();
+
+
+            const promise = controller.getData.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/data/regression',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DataController_getDataRegression(request: any, response: any, next: any) {
+            const args = {
+                    metricType: {"in":"query","name":"metricType","required":true,"dataType":"string"},
+                    period: {"in":"query","name":"period","required":true,"dataType":"string"},
+                    area: {"in":"query","name":"area","required":true,"dataType":"string"},
+                    columnGrouping: {"in":"query","name":"columnGrouping","dataType":"string"},
+                    headerCellType: {"in":"query","name":"headerCellType","dataType":"string"},
+                    includeMissing: {"in":"query","name":"includeMissing","dataType":"string"},
+                    outputType: {"in":"query","name":"outputType","dataType":"string"},
+                    rowGrouping: {"in":"query","name":"rowGrouping","dataType":"string"},
+                    summary: {"in":"query","name":"summary","dataType":"string"},
+                    valueType: {"in":"query","name":"valueType","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DataController();
+
+
+            const promise = controller.getDataRegression.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/data/data.table',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DataController_getDataTable(request: any, response: any, next: any) {
+            const args = {
+                    area: {"in":"query","name":"area","required":true,"dataType":"string"},
+                    period: {"in":"query","name":"period","required":true,"dataType":"string"},
+                    metricType: {"in":"query","name":"metricType","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DataController();
+
+
+            const promise = controller.getDataTable.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

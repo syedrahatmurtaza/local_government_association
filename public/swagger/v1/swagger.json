@@ -1121,6 +1121,393 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Metadata": {
+				"properties": {
+					"columnGrouping": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"rowGrouping": {
+						"items": {},
+						"type": "array"
+					}
+				},
+				"required": [
+					"columnGrouping",
+					"rowGrouping"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Areadata": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"altLabel": {
+						"type": "string"
+					},
+					"isSummary": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"isSummary"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Column": {
+				"properties": {
+					"area": {
+						"$ref": "#/components/schemas/Areadata"
+					},
+					"metricType": {
+						"$ref": "#/components/schemas/Areadata"
+					},
+					"period": {
+						"$ref": "#/components/schemas/Areadata"
+					},
+					"valueType": {
+						"$ref": "#/components/schemas/Areadata"
+					}
+				},
+				"required": [
+					"area",
+					"metricType",
+					"period",
+					"valueType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Value": {
+				"properties": {
+					"source": {
+						"type": "number",
+						"format": "double"
+					},
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"formatted": {
+						"type": "string"
+					},
+					"format": {
+						"type": "string"
+					},
+					"publicationStatus": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"source",
+					"value",
+					"formatted",
+					"format",
+					"publicationStatus"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Row": {
+				"properties": {
+					"values": {
+						"items": {
+							"$ref": "#/components/schemas/Value"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"values"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataGetResponse": {
+				"properties": {
+					"metadata": {
+						"$ref": "#/components/schemas/Metadata"
+					},
+					"columns": {
+						"items": {
+							"$ref": "#/components/schemas/Column"
+						},
+						"type": "array"
+					},
+					"rows": {
+						"items": {
+							"$ref": "#/components/schemas/Row"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"metadata",
+					"columns",
+					"rows"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MetadataRegression": {
+				"properties": {
+					"columnGrouping": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"rowGrouping": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"columnGrouping",
+					"rowGrouping"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MetricType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"altLabel": {
+						"type": "string"
+					},
+					"isSummary": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"isSummary"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ColumnRegression": {
+				"properties": {
+					"metricType": {
+						"$ref": "#/components/schemas/MetricType"
+					},
+					"period": {
+						"$ref": "#/components/schemas/MetricType"
+					},
+					"valueType": {
+						"$ref": "#/components/schemas/MetricType"
+					}
+				},
+				"required": [
+					"metricType",
+					"period",
+					"valueType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RowRegression": {
+				"properties": {
+					"area": {
+						"$ref": "#/components/schemas/MetricType"
+					},
+					"values": {
+						"items": {
+							"$ref": "#/components/schemas/Value"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"area",
+					"values"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Coordinate": {
+				"properties": {
+					"x": {
+						"type": "number",
+						"format": "double"
+					},
+					"y": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"x",
+					"y"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Regression": {
+				"properties": {
+					"coordinates": {
+						"items": {
+							"$ref": "#/components/schemas/Coordinate"
+						},
+						"type": "array"
+					},
+					"rSquare": {
+						"type": "number",
+						"format": "double"
+					},
+					"rSquareLog": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"coordinates",
+					"rSquare"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataRegressionGetResponse": {
+				"properties": {
+					"metadata": {
+						"$ref": "#/components/schemas/MetadataRegression"
+					},
+					"columns": {
+						"items": {
+							"$ref": "#/components/schemas/ColumnRegression"
+						},
+						"type": "array"
+					},
+					"rows": {
+						"items": {
+							"$ref": "#/components/schemas/RowRegression"
+						},
+						"type": "array"
+					},
+					"regressions": {
+						"items": {
+							"$ref": "#/components/schemas/Regression"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"metadata",
+					"columns",
+					"rows",
+					"regressions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataTableGetResponse": {
+				"properties": {
+					"metricTypeIdentifier": {
+						"type": "string"
+					},
+					"metricTypeLabel": {
+						"type": "string"
+					},
+					"metricTypeAltLabel": {
+						"type": "string"
+					},
+					"metricTypeIsSummary": {
+						"type": "string"
+					},
+					"areaIdentifier": {
+						"type": "string"
+					},
+					"areaLabel": {
+						"type": "string"
+					},
+					"areaAltLabel": {
+						"type": "string"
+					},
+					"areaIsSummary": {
+						"type": "string"
+					},
+					"periodIdentifier": {
+						"type": "string"
+					},
+					"periodLabel": {
+						"type": "string"
+					},
+					"periodAltLabel": {
+						"type": "string"
+					},
+					"periodIsSummary": {
+						"type": "string"
+					},
+					"valueTypeIdentifier": {
+						"type": "string"
+					},
+					"valueTypeLabel": {
+						"type": "string"
+					},
+					"valueTypeIsSummary": {
+						"type": "string"
+					},
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"source": {
+						"type": "number",
+						"format": "double"
+					},
+					"formatted": {
+						"type": "string"
+					},
+					"format": {
+						"type": "string"
+					},
+					"publicationStatus": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"metricTypeIdentifier",
+					"metricTypeLabel",
+					"metricTypeAltLabel",
+					"metricTypeIsSummary",
+					"areaIdentifier",
+					"areaLabel",
+					"areaAltLabel",
+					"areaIsSummary",
+					"periodIdentifier",
+					"periodLabel",
+					"periodAltLabel",
+					"periodIsSummary",
+					"valueTypeIdentifier",
+					"valueTypeLabel",
+					"valueTypeIsSummary",
+					"value",
+					"source",
+					"formatted",
+					"format",
+					"publicationStatus"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -2016,6 +2403,299 @@
 					}
 				]
 			}
+		},
+		"/v1/data": {
+			"get": {
+				"operationId": "GetData",
+				"responses": {
+					"200": {
+						"description": "IDataGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Note that when the denominator metric type uses a different period type from the numerator. The first denominator period that has a \"end date\" less than the chosen numerator period is used with the denominator metric type",
+				"summary": "Returns table or values to populate a user specified table component. At minimum, 'area', 'metricType' and 'period' parameters are required",
+				"tags": [
+					"data"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "metricType",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The time period that is to be returned. To just retrieve data for the latest available period, use \"latest\". For the most recent two time periods, use \"latest:2\", and so on. Otherwise one or more time period identifiers can be used",
+						"in": "query",
+						"name": "period",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The area or comparison group that the data values are for",
+						"in": "query",
+						"name": "area",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify how the results will be grouped when viewed in a tabular format",
+						"in": "query",
+						"name": "columnGrouping",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Whether the header cells should be labels or identifiers",
+						"in": "query",
+						"name": "headerCellType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "If this is set to true, areas which do not have values will be included in the results",
+						"in": "query",
+						"name": "includeMissing",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Format for which the data will be used. For example table or pie",
+						"in": "query",
+						"name": "outputType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify how the results will be grouped when viewed in a tabular format",
+						"in": "query",
+						"name": "rowGrouping",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Use summaryType to define the type of summary and what will be summarised. Example summary types are sum, min and max",
+						"in": "query",
+						"name": "summary",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The type of value that is returned for each query is defined by the valueType parameter, examples are raw, rank and band",
+						"in": "query",
+						"name": "valueType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/data/regression": {
+			"get": {
+				"operationId": "GetDataRegression",
+				"responses": {
+					"200": {
+						"description": "IDataRegressionGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataRegressionGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Returns table or values to populate a user specified table component and includes a regression x1, y1, x2, y2 coordinate for the regression line between each pair of columns. As with /data, at minimum 'area', 'metricType' and 'period' are required. The regression values appear at the end of the data results",
+				"tags": [
+					"data"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "metricType",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The time period that is to be returned. To just retrieve data for the latest available period, use \"latest\". For the most recent two time periods, use \"latest:2\", and so on. Otherwise one or more time period identifiers can be used",
+						"in": "query",
+						"name": "period",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The area or comparison group that the data values are for",
+						"in": "query",
+						"name": "area",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify how the results will be grouped when viewed in a tabular format",
+						"in": "query",
+						"name": "columnGrouping",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Whether the header cells should be labels or identifiers",
+						"in": "query",
+						"name": "headerCellType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "If this is set to true, areas which do not have values will be included in the results",
+						"in": "query",
+						"name": "includeMissing",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Format for which the data will be used. For example table or pie",
+						"in": "query",
+						"name": "outputType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify how the results will be grouped when viewed in a tabular format",
+						"in": "query",
+						"name": "rowGrouping",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Use summaryType to define the type of summary and what will be summarised. Example summary types are sum, min and max",
+						"in": "query",
+						"name": "summary",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The type of value that is returned for each query is defined by the valueType parameter, examples are raw, rank and band",
+						"in": "query",
+						"name": "valueType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/data/data.table": {
+			"get": {
+				"operationId": "GetDataTable",
+				"responses": {
+					"200": {
+						"description": "IDataTableGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/IDataTableGetResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Returns data method results in JSON table format with a different row for each parameter. This accepts the same parameters as the /data method",
+				"tags": [
+					"data"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The area or comparison group that the data values are for",
+						"in": "query",
+						"name": "area",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The time period that is to be returned. To just retrieve data for the latest available period, use \"latest\". For the most recent two time periods, use \"latest:2\", and so on. Otherwise one or more time period identifiers can be used",
+						"in": "query",
+						"name": "period",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The metric type the data value is for",
+						"in": "query",
+						"name": "metricType",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -2051,6 +2731,9 @@
 		},
 		{
 			"name": "comparisonGroups"
+		},
+		{
+			"name": "data"
 		}
 	]
 }
