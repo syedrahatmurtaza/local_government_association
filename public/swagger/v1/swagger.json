@@ -1509,6 +1509,205 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"Dataset": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataSetGetResponse": {
+				"properties": {
+					"dataset-array": {
+						"items": {
+							"$ref": "#/components/schemas/Dataset"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dataset-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApplicableAreaType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					},
+					"longLabel": {
+						"type": "string"
+					},
+					"isGroup": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel",
+					"longLabel",
+					"isGroup"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CollectionVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"isLocalCollectionRequired": {
+						"type": "boolean"
+					},
+					"sourceName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"url",
+					"isLocalCollectionRequired",
+					"sourceName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MeasurementUnit": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"shortLabel": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"shortLabel"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Measure": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"dataset": {
+						"$ref": "#/components/schemas/Dataset"
+					},
+					"measurementUnit": {
+						"$ref": "#/components/schemas/MeasurementUnit"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"dataset",
+					"measurementUnit"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DatasetVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"isSpecificToOrganisation": {
+						"type": "boolean"
+					},
+					"applicableAreaTypes": {
+						"items": {
+							"$ref": "#/components/schemas/ApplicableAreaType"
+						},
+						"type": "array"
+					},
+					"collection": {
+						"$ref": "#/components/schemas/CollectionVerbose"
+					},
+					"measures": {
+						"items": {
+							"$ref": "#/components/schemas/Measure"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"isSpecificToOrganisation",
+					"applicableAreaTypes",
+					"collection",
+					"measures"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataSetVerboseGetResponse": {
+				"properties": {
+					"dataset-array": {
+						"items": {
+							"$ref": "#/components/schemas/DatasetVerbose"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dataset-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataSetIdentifierGetResponse": {
+				"properties": {
+					"dataset-array": {
+						"items": {
+							"$ref": "#/components/schemas/DatasetVerbose"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dataset-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Replace": {
 				"properties": {
 					"identifier": {
@@ -2809,6 +3008,98 @@
 				]
 			}
 		},
+		"/v1/datasets": {
+			"get": {
+				"operationId": "GetDataSet",
+				"responses": {
+					"200": {
+						"description": "IDataSetGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataSetGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Returns a list of datasets. Only basic details are provided including identifier, label and some others",
+				"tags": [
+					"datasets"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/datasets/verbose": {
+			"get": {
+				"operationId": "GetDataSetVerbose",
+				"responses": {
+					"200": {
+						"description": "IDataSetVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataSetVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details of all datasets",
+				"tags": [
+					"datasets"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/datasets/{identifier}": {
+			"get": {
+				"operationId": "GetDataSetIdentifier",
+				"responses": {
+					"200": {
+						"description": "IDataSetIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataSetIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Details about a particular dataset, using its identifier",
+				"tags": [
+					"datasets"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(102)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
 		"/v1/datasetCollections": {
 			"get": {
 				"operationId": "GetDataSetCollection",
@@ -2952,6 +3243,9 @@
 		},
 		{
 			"name": "datasetCollections"
+		},
+		{
+			"name": "datasets"
 		}
 	]
 }

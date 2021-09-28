@@ -135,3 +135,16 @@ export const DATA_SET_COLLECTION_VERBOSE_TARGET_URL =
 // Data Set Collection Identifier
 export const DATA_SET_COLLECTION_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasetCollections/'
+
+/***************************      Target API Data Set Collection    *****************************************/
+// Data Set
+export const DATA_SET_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasets'
+
+// Data Set Verbose
+export const DATA_SET_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasets/verbose'
+
+// Data Set Verbose
+export const DATA_SET_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasets/'

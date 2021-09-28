@@ -1,7 +1,7 @@
 import { DataSetCollectionService } from '../services/informplus/dataSetCollection.service'
-import { IDataSetCollectionGetResponse } from '../types/responses/informPlus/dataSet/dataSetCollection.response'
-import { IDataSetCollectionIdentifierGetResponse } from '../types/responses/informPlus/dataSet/dataSetCollectionIdentifier.response'
-import { IDataSetCollectionVerboseGetResponse } from '../types/responses/informPlus/dataSet/dataSetCollectionVerbose.response'
+import { IDataSetCollectionGetResponse } from '../types/responses/informPlus/dataSetCollection/dataSetCollection.response'
+import { IDataSetCollectionIdentifierGetResponse } from '../types/responses/informPlus/dataSetCollection/dataSetCollectionIdentifier.response'
+import { IDataSetCollectionVerboseGetResponse } from '../types/responses/informPlus/dataSetCollection/dataSetCollectionVerbose.response'
 
 export class DataSetCollectionRepository {
   constructor() {}

@@ -33,7 +33,8 @@
       { "name": "comparisonGroupTypes" },
       { "name": "comparisonGroups" },
       { "name": "data" },
-      { "name": "datasetCollections" }
+      { "name": "datasetCollections" },
+      { "name": "datasets" }
     ]
   },
   "routes": {
