@@ -20,6 +20,8 @@ import { ComparisonGroupsController } from './../controllers/comparisonGroups.co
 import { ComparisonGroupTypesController } from './../controllers/comparisonGroupTypes.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { DataController } from './../controllers/data.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { DataSetCollectionController } from './../controllers/dataSetCollection.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -672,6 +674,56 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Replace": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "url": {"dataType":"string","required":true},
+            "isLocalCollectionRequired": {"dataType":"boolean","required":true},
+            "sourceName": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DatasetCollection": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "url": {"dataType":"string","required":true},
+            "isLocalCollectionRequired": {"dataType":"boolean","required":true},
+            "sourceName": {"dataType":"string","required":true},
+            "replaces": {"dataType":"array","array":{"dataType":"refObject","ref":"Replace"},"required":true},
+            "replacedBy": {"dataType":"array","array":{"dataType":"refObject","ref":"Replace"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDataSetCollectionGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "datasetCollection-array": {"dataType":"array","array":{"dataType":"refObject","ref":"DatasetCollection"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDataSetCollectionVerboseGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "datasetCollection-array": {"dataType":"array","array":{"dataType":"refObject","ref":"DatasetCollection"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDataSetCollectionIdentifierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "datasetCollection": {"ref":"DatasetCollection","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const validationService = new ValidationService(models);
 
@@ -1306,6 +1358,77 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getDataTable.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/datasetCollections',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DataSetCollectionController_getDataSetCollection(request: any, response: any, next: any) {
+            const args = {
+                    filterOff: {"in":"query","name":"filterOff","dataType":"double"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DataSetCollectionController();
+
+
+            const promise = controller.getDataSetCollection.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/datasetCollections/verbose',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DataSetCollectionController_getDataSetCollectionVerbose(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DataSetCollectionController();
+
+
+            const promise = controller.getDataSetCollectionVerbose.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/datasetCollections/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DataSetCollectionController_getDataSetCollectionIdentifier(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"double"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DataSetCollectionController();
+
+
+            const promise = controller.getDataSetCollectionIdentifier.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

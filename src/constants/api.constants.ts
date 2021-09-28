@@ -122,3 +122,16 @@ export const DATA_REGRESSION_TARGET_URL =
 // Data Table
 export const DATA_TABLE_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/data.table'
+
+/***************************      Target API Data Set Collection    *****************************************/
+// Data Set Collection
+export const DATA_SET_COLLECTION_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasetCollections'
+
+// Data Set Collection Verbose
+export const DATA_SET_COLLECTION_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasetCollections/verbose'
+
+// Data Set Collection Identifier
+export const DATA_SET_COLLECTION_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasetCollections/'

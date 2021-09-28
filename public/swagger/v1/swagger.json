@@ -1508,6 +1508,118 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Replace": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"isLocalCollectionRequired": {
+						"type": "boolean"
+					},
+					"sourceName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"url",
+					"isLocalCollectionRequired",
+					"sourceName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DatasetCollection": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"isLocalCollectionRequired": {
+						"type": "boolean"
+					},
+					"sourceName": {
+						"type": "string"
+					},
+					"replaces": {
+						"items": {
+							"$ref": "#/components/schemas/Replace"
+						},
+						"type": "array"
+					},
+					"replacedBy": {
+						"items": {
+							"$ref": "#/components/schemas/Replace"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"url",
+					"isLocalCollectionRequired",
+					"sourceName",
+					"replaces",
+					"replacedBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataSetCollectionGetResponse": {
+				"properties": {
+					"datasetCollection-array": {
+						"items": {
+							"$ref": "#/components/schemas/DatasetCollection"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"datasetCollection-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataSetCollectionVerboseGetResponse": {
+				"properties": {
+					"datasetCollection-array": {
+						"items": {
+							"$ref": "#/components/schemas/DatasetCollection"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"datasetCollection-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDataSetCollectionIdentifierGetResponse": {
+				"properties": {
+					"datasetCollection": {
+						"$ref": "#/components/schemas/DatasetCollection"
+					}
+				},
+				"required": [
+					"datasetCollection"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -2696,6 +2808,109 @@
 					}
 				]
 			}
+		},
+		"/v1/datasetCollections": {
+			"get": {
+				"operationId": "GetDataSetCollection",
+				"responses": {
+					"200": {
+						"description": "IDataSetCollectionGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataSetCollectionGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "The source from which the data used by any related datasets was obtained",
+				"tags": [
+					"datasetCollections"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Removes all filters on list <b>(1)</b>",
+						"in": "query",
+						"name": "filterOff",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/v1/datasetCollections/verbose": {
+			"get": {
+				"operationId": "GetDataSetCollectionVerbose",
+				"responses": {
+					"200": {
+						"description": "IDataSetCollectionVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataSetCollectionVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details of all sources used by datasets",
+				"tags": [
+					"datasetCollections"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/datasetCollections/{identifier}": {
+			"get": {
+				"operationId": "GetDataSetCollectionIdentifier",
+				"responses": {
+					"200": {
+						"description": "IDataSetCollectionIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDataSetCollectionIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details of a particular source, using its identifier",
+				"tags": [
+					"datasetCollections"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(145)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -2734,6 +2949,9 @@
 		},
 		{
 			"name": "data"
+		},
+		{
+			"name": "datasetCollections"
 		}
 	]
 }

@@ -32,7 +32,8 @@
       { "name": "clientApplications" },
       { "name": "comparisonGroupTypes" },
       { "name": "comparisonGroups" },
-      { "name": "data" }
+      { "name": "data" },
+      { "name": "datasetCollections" }
     ]
   },
   "routes": {
