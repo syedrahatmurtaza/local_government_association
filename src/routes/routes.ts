@@ -34,6 +34,8 @@ import { DimensionsController } from './../controllers/dimensions.controller';
 import { EditorConfigController } from './../controllers/editorConfig.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { ListController } from './../controllers/lists.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { MarkerGroupsController } from './../controllers/markerGroups.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -1446,6 +1448,37 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "FieldMarkerGroup": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "label": {"dataType":"string","required":true},
+            "sort": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "MarkerGroupMarkerGroup": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"double","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string"},
+            "aggregableOverTime": {"dataType":"boolean","required":true},
+            "agencyIdentifier": {"dataType":"string"},
+            "fields": {"dataType":"array","array":{"dataType":"refObject","ref":"FieldMarkerGroup"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IMarkerGroupsGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "markerGroup-array": {"dataType":"array","array":{"dataType":"refObject","ref":"MarkerGroupMarkerGroup"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const validationService = new ValidationService(models);
 
@@ -2613,6 +2646,31 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getListByListIdenfitier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/markerGroups',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function MarkerGroupsController_getMarkerGroups(request: any, response: any, next: any) {
+            const args = {
+                    categoryTypeId: {"in":"query","name":"categoryTypeId","required":true,"dataType":"string"},
+                    organisationID: {"in":"query","name":"organisationID","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new MarkerGroupsController();
+
+
+            const promise = controller.getMarkerGroups.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

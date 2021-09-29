@@ -39,7 +39,8 @@
       { "name": "dimensionMembers" },
       { "name": "dimensions" },
       { "name": "editor" },
-      { "name": "lists" }
+      { "name": "lists" },
+      { "name": "markerGroups" }
     ]
   },
   "routes": {

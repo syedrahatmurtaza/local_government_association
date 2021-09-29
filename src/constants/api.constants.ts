@@ -211,3 +211,8 @@ export const LISTS_LISTID_VERBOSE_PATH = '/verbose'
 // Lists By Id
 export const LISTS_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/lists/'
+
+/***************************      Target API Marker Groups    *****************************************/
+// Marker Groups
+export const MARKER_GROUP_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/markerGroups'

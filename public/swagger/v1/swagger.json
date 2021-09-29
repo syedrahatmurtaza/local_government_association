@@ -3224,6 +3224,77 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"FieldMarkerGroup": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"label": {
+						"type": "string"
+					},
+					"sort": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"label",
+					"sort"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MarkerGroupMarkerGroup": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"aggregableOverTime": {
+						"type": "boolean"
+					},
+					"agencyIdentifier": {
+						"type": "string"
+					},
+					"fields": {
+						"items": {
+							"$ref": "#/components/schemas/FieldMarkerGroup"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"label",
+					"aggregableOverTime",
+					"fields"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IMarkerGroupsGetResponse": {
+				"properties": {
+					"markerGroup-array": {
+						"items": {
+							"$ref": "#/components/schemas/MarkerGroupMarkerGroup"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"markerGroup-array"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -5447,6 +5518,52 @@
 					}
 				]
 			}
+		},
+		"/v1/markerGroups": {
+			"get": {
+				"operationId": "GetMarkerGroups",
+				"responses": {
+					"200": {
+						"description": "IMarkerGroupsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IMarkerGroupsGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Show details and content of marker groups",
+				"tags": [
+					"markerGroups"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Get marker groups for a specific category",
+						"in": "query",
+						"name": "categoryTypeId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Get marker groups owned by a specific organisation",
+						"in": "query",
+						"name": "organisationID",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -5506,6 +5623,9 @@
 		},
 		{
 			"name": "lists"
+		},
+		{
+			"name": "markerGroups"
 		}
 	]
 }
