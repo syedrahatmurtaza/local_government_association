@@ -30,6 +30,8 @@ import { DerivationController } from './../controllers/derivation.controller';
 import { DimensionMembersController } from './../controllers/dimensionMembers.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { DimensionsController } from './../controllers/dimensions.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { EditorConfigController } from './../controllers/editorConfig.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -909,6 +911,244 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "dimension": {"ref":"DimensionVerbose","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Areas": {
+        "dataType": "refObject",
+        "properties": {
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Capitalisation": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "index": {"dataType":"double","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "RankedOptions": {
+        "dataType": "refObject",
+        "properties": {
+            "label": {"ref":"Capitalisation","required":true},
+            "short-label": {"ref":"Capitalisation","required":true},
+            "lower-case-label": {"ref":"Capitalisation","required":true},
+            "value": {"ref":"Capitalisation","required":true},
+            "value-with-units": {"ref":"Capitalisation","required":true},
+            "percent": {"ref":"Capitalisation","required":true},
+            "long-area-label": {"ref":"Capitalisation"},
+            "value-with-full-derivation": {"ref":"Capitalisation","required":true},
+            "value-with-units-full-derivation": {"ref":"Capitalisation","required":true},
+            "dimension-label": {"ref":"Capitalisation"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "MetadataOptions": {
+        "dataType": "refObject",
+        "properties": {
+            "label": {"ref":"Capitalisation","required":true},
+            "short-label": {"ref":"Capitalisation","required":true},
+            "source": {"ref":"Capitalisation","required":true},
+            "identifier": {"ref":"Capitalisation","required":true},
+            "collection": {"ref":"Capitalisation","required":true},
+            "help-text": {"ref":"Capitalisation","required":true},
+            "formatted-help-text": {"ref":"Capitalisation","required":true},
+            "polarity": {"ref":"Capitalisation","required":true},
+            "data-last-updated": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "EquivalentOptionsClass": {
+        "dataType": "refObject",
+        "properties": {
+            "value": {"ref":"Capitalisation","required":true},
+            "value-with-units": {"ref":"Capitalisation","required":true},
+            "period-label": {"ref":"Capitalisation","required":true},
+            "degree-of-fit": {"ref":"Capitalisation","required":true},
+            "value-with-full-derivation": {"ref":"Capitalisation","required":true},
+            "value-with-units-full-derivation": {"ref":"Capitalisation","required":true},
+            "full-derivation": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DerivedOptionsClass": {
+        "dataType": "refObject",
+        "properties": {
+            "value": {"ref":"Capitalisation","required":true},
+            "value-with-units": {"ref":"Capitalisation"},
+            "value-with-full-derivation": {"ref":"Capitalisation","required":true},
+            "value-with-units-full-derivation": {"ref":"Capitalisation","required":true},
+            "full-derivation": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "SummaryTypeReturnOptions": {
+        "dataType": "refObject",
+        "properties": {
+            "value": {"ref":"Capitalisation","required":true},
+            "value-with-units": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "LabelLengthOptions": {
+        "dataType": "refObject",
+        "properties": {
+            "label": {"ref":"Capitalisation","required":true},
+            "short-label": {"ref":"Capitalisation","required":true},
+            "long-label": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "LabelCaseOptions": {
+        "dataType": "refObject",
+        "properties": {
+            "case": {"ref":"Capitalisation","required":true},
+            "plural": {"ref":"Capitalisation","required":true},
+            "both": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CapitalisationOptions": {
+        "dataType": "refObject",
+        "properties": {
+            "capitalisation": {"ref":"Capitalisation","required":true},
+            "nocaps": {"ref":"Capitalisation","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Data": {
+        "dataType": "refObject",
+        "properties": {
+            "areas-fixed": {"ref":"Areas","required":true},
+            "areas-relative": {"ref":"Areas","required":true},
+            "ranked-metric-type-options": {"ref":"RankedOptions","required":true},
+            "ranked-area-options": {"ref":"RankedOptions","required":true},
+            "metadata-options": {"ref":"MetadataOptions","required":true},
+            "metric-value-options": {"ref":"EquivalentOptionsClass","required":true},
+            "equivalent-options": {"ref":"EquivalentOptionsClass","required":true},
+            "derived-options": {"ref":"DerivedOptionsClass","required":true},
+            "percent-options": {"ref":"DerivedOptionsClass","required":true},
+            "summary-type-options": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Capitalisation"},"required":true},
+            "summary-type-return-options": {"ref":"SummaryTypeReturnOptions","required":true},
+            "value-type-options": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Capitalisation"},"required":true},
+            "value-type-derived-options": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"ref":"Capitalisation"},"required":true},
+            "label-length-options": {"ref":"LabelLengthOptions","required":true},
+            "label-case-options": {"ref":"LabelCaseOptions","required":true},
+            "capitalisation-options": {"ref":"CapitalisationOptions","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TabType": {
+        "dataType": "refEnum",
+        "enums": ["Fields","Function"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "FieldArray": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string"},
+            "label": {"dataType":"string","required":true},
+            "hint": {"dataType":"string"},
+            "options": {"dataType":"string","required":true},
+            "default": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TabArray": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "index": {"dataType":"double","required":true},
+            "tab-type": {"ref":"TabType","required":true},
+            "description": {"dataType":"string","required":true},
+            "field-array": {"dataType":"array","array":{"dataType":"refObject","ref":"FieldArray"},"required":true},
+            "output-text": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TextTokenConfiguration": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"ref":"Data","required":true},
+            "tab-array": {"dataType":"array","array":{"dataType":"refObject","ref":"TabArray"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IEditorConfigGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "text-token-configuration": {"ref":"TextTokenConfiguration","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Source": {
+        "dataType": "refObject",
+        "properties": {
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TextTokenFieldList": {
+        "dataType": "refObject",
+        "properties": {
+            "source": {"dataType":"array","array":{"dataType":"refObject","ref":"Source"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IEditorFieldsGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "text-token-field-list": {"ref":"TextTokenFieldList","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "SourceFunction": {
+        "dataType": "refObject",
+        "properties": {
+            "name": {"dataType":"string","required":true},
+            "syntax": {"dataType":"string","required":true},
+            "requiredParameters": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "examples": {"dataType":"array","array":{"dataType":"string"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "TextTokenFunctionList": {
+        "dataType": "refObject",
+        "properties": {
+            "source": {"dataType":"array","array":{"dataType":"refObject","ref":"SourceFunction"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IEditorFunctionGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "text-token-function-list": {"ref":"TextTokenFunctionList","required":true},
         },
         "additionalProperties": false,
     },
@@ -1864,6 +2104,102 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getDimensionsIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/editor/config',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function EditorConfigController_getEditorConfig(request: any, response: any, next: any) {
+            const args = {
+                    area: {"in":"query","name":"area","dataType":"string"},
+                    areaTypeMax: {"in":"query","name":"areaTypeMax","dataType":"string"},
+                    authorityArea: {"in":"query","name":"authorityArea","dataType":"string"},
+                    childArea: {"in":"query","name":"childArea","dataType":"string"},
+                    comparisonGroup: {"in":"query","name":"comparisonGroup","dataType":"string"},
+                    includeChildArea: {"in":"query","name":"includeChildArea","dataType":"string"},
+                    latestPeriod: {"in":"query","name":"latestPeriod","dataType":"string"},
+                    metricDimension: {"in":"query","name":"metricDimension","dataType":"string"},
+                    metricType: {"in":"query","name":"metricType","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new EditorConfigController();
+
+
+            const promise = controller.getEditorConfig.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/editor/fields',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function EditorConfigController_getEditorFields(request: any, response: any, next: any) {
+            const args = {
+                    area: {"in":"query","name":"area","dataType":"string"},
+                    areaTypeMax: {"in":"query","name":"areaTypeMax","dataType":"string"},
+                    authorityArea: {"in":"query","name":"authorityArea","dataType":"string"},
+                    childArea: {"in":"query","name":"childArea","dataType":"string"},
+                    comparisonGroup: {"in":"query","name":"comparisonGroup","dataType":"string"},
+                    includeChildArea: {"in":"query","name":"includeChildArea","dataType":"string"},
+                    latestPeriod: {"in":"query","name":"latestPeriod","dataType":"string"},
+                    metricDimension: {"in":"query","name":"metricDimension","dataType":"string"},
+                    metricType: {"in":"query","name":"metricType","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new EditorConfigController();
+
+
+            const promise = controller.getEditorFields.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/editor/functions',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function EditorConfigController_getEditorFunction(request: any, response: any, next: any) {
+            const args = {
+                    area: {"in":"query","name":"area","dataType":"string"},
+                    areaTypeMax: {"in":"query","name":"areaTypeMax","dataType":"string"},
+                    authorityArea: {"in":"query","name":"authorityArea","dataType":"string"},
+                    childArea: {"in":"query","name":"childArea","dataType":"string"},
+                    comparisonGroup: {"in":"query","name":"comparisonGroup","dataType":"string"},
+                    includeChildArea: {"in":"query","name":"includeChildArea","dataType":"string"},
+                    latestPeriod: {"in":"query","name":"latestPeriod","dataType":"string"},
+                    metricDimension: {"in":"query","name":"metricDimension","dataType":"string"},
+                    metricType: {"in":"query","name":"metricType","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new EditorConfigController();
+
+
+            const promise = controller.getEditorFunction.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

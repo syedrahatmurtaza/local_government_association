@@ -167,7 +167,7 @@ export const DIMENSION_MEMBERS_VERBOSE_TARGET_URL =
 export const DIMENSION_MEMBERS_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensionMembers/'
 
-/***************************      Target API Dimension Members    *****************************************/
+/***************************      Target API Dimension    *****************************************/
 // Dimensions
 export const DIMENSIONS_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensions'
@@ -179,3 +179,16 @@ export const DIMENSIONS_VERBOSE_TARGET_URL =
 // Dimensions Identifier
 export const DIMENSIONS_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensions/'
+
+/***************************      Target API Editor Config    *****************************************/
+// Editor Config
+export const EDITOR_CONFIG_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/editor/config'
+
+// Editor Field
+export const EDITOR_FIELD_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/editor/fields'
+
+// Editor Functions
+export const EDITOR_FUNCTIONS_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/editor/functions'

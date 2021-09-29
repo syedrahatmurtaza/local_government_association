@@ -1992,6 +1992,544 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"Areas": {
+				"properties": {},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Capitalisation": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"index": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"index"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RankedOptions": {
+				"properties": {
+					"label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"short-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"lower-case-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"percent": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"long-area-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units-full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"dimension-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"label",
+					"short-label",
+					"lower-case-label",
+					"value",
+					"value-with-units",
+					"percent",
+					"value-with-full-derivation",
+					"value-with-units-full-derivation"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MetadataOptions": {
+				"properties": {
+					"label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"short-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"source": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"identifier": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"collection": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"help-text": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"formatted-help-text": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"polarity": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"data-last-updated": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"label",
+					"short-label",
+					"source",
+					"identifier",
+					"collection",
+					"help-text",
+					"formatted-help-text",
+					"polarity",
+					"data-last-updated"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EquivalentOptionsClass": {
+				"properties": {
+					"value": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"period-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"degree-of-fit": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units-full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"value",
+					"value-with-units",
+					"period-label",
+					"degree-of-fit",
+					"value-with-full-derivation",
+					"value-with-units-full-derivation",
+					"full-derivation"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DerivedOptionsClass": {
+				"properties": {
+					"value": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units-full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"full-derivation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"value",
+					"value-with-full-derivation",
+					"value-with-units-full-derivation",
+					"full-derivation"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SummaryTypeReturnOptions": {
+				"properties": {
+					"value": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"value-with-units": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"value",
+					"value-with-units"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LabelLengthOptions": {
+				"properties": {
+					"label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"short-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"long-label": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"label",
+					"short-label",
+					"long-label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LabelCaseOptions": {
+				"properties": {
+					"case": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"plural": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"both": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"case",
+					"plural",
+					"both"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CapitalisationOptions": {
+				"properties": {
+					"capitalisation": {
+						"$ref": "#/components/schemas/Capitalisation"
+					},
+					"nocaps": {
+						"$ref": "#/components/schemas/Capitalisation"
+					}
+				},
+				"required": [
+					"capitalisation",
+					"nocaps"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Data": {
+				"properties": {
+					"areas-fixed": {
+						"$ref": "#/components/schemas/Areas"
+					},
+					"areas-relative": {
+						"$ref": "#/components/schemas/Areas"
+					},
+					"ranked-metric-type-options": {
+						"$ref": "#/components/schemas/RankedOptions"
+					},
+					"ranked-area-options": {
+						"$ref": "#/components/schemas/RankedOptions"
+					},
+					"metadata-options": {
+						"$ref": "#/components/schemas/MetadataOptions"
+					},
+					"metric-value-options": {
+						"$ref": "#/components/schemas/EquivalentOptionsClass"
+					},
+					"equivalent-options": {
+						"$ref": "#/components/schemas/EquivalentOptionsClass"
+					},
+					"derived-options": {
+						"$ref": "#/components/schemas/DerivedOptionsClass"
+					},
+					"percent-options": {
+						"$ref": "#/components/schemas/DerivedOptionsClass"
+					},
+					"summary-type-options": {
+						"properties": {},
+						"additionalProperties": {
+							"$ref": "#/components/schemas/Capitalisation"
+						},
+						"type": "object"
+					},
+					"summary-type-return-options": {
+						"$ref": "#/components/schemas/SummaryTypeReturnOptions"
+					},
+					"value-type-options": {
+						"properties": {},
+						"additionalProperties": {
+							"$ref": "#/components/schemas/Capitalisation"
+						},
+						"type": "object"
+					},
+					"value-type-derived-options": {
+						"properties": {},
+						"additionalProperties": {
+							"$ref": "#/components/schemas/Capitalisation"
+						},
+						"type": "object"
+					},
+					"label-length-options": {
+						"$ref": "#/components/schemas/LabelLengthOptions"
+					},
+					"label-case-options": {
+						"$ref": "#/components/schemas/LabelCaseOptions"
+					},
+					"capitalisation-options": {
+						"$ref": "#/components/schemas/CapitalisationOptions"
+					}
+				},
+				"required": [
+					"areas-fixed",
+					"areas-relative",
+					"ranked-metric-type-options",
+					"ranked-area-options",
+					"metadata-options",
+					"metric-value-options",
+					"equivalent-options",
+					"derived-options",
+					"percent-options",
+					"summary-type-options",
+					"summary-type-return-options",
+					"value-type-options",
+					"value-type-derived-options",
+					"label-length-options",
+					"label-case-options",
+					"capitalisation-options"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TabType": {
+				"enum": [
+					"Fields",
+					"Function"
+				],
+				"type": "string"
+			},
+			"FieldArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"hint": {
+						"type": "string"
+					},
+					"options": {
+						"type": "string"
+					},
+					"default": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"label",
+					"options"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TabArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"index": {
+						"type": "number",
+						"format": "double"
+					},
+					"tab-type": {
+						"$ref": "#/components/schemas/TabType"
+					},
+					"description": {
+						"type": "string"
+					},
+					"field-array": {
+						"items": {
+							"$ref": "#/components/schemas/FieldArray"
+						},
+						"type": "array"
+					},
+					"output-text": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"index",
+					"tab-type",
+					"description",
+					"field-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TextTokenConfiguration": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/Data"
+					},
+					"tab-array": {
+						"items": {
+							"$ref": "#/components/schemas/TabArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data",
+					"tab-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IEditorConfigGetResponse": {
+				"properties": {
+					"text-token-configuration": {
+						"$ref": "#/components/schemas/TextTokenConfiguration"
+					}
+				},
+				"required": [
+					"text-token-configuration"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Source": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"description"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TextTokenFieldList": {
+				"properties": {
+					"source": {
+						"items": {
+							"$ref": "#/components/schemas/Source"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"source"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IEditorFieldsGetResponse": {
+				"properties": {
+					"text-token-field-list": {
+						"$ref": "#/components/schemas/TextTokenFieldList"
+					}
+				},
+				"required": [
+					"text-token-field-list"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SourceFunction": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"syntax": {
+						"type": "string"
+					},
+					"requiredParameters": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"examples": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"name",
+					"syntax",
+					"requiredParameters",
+					"description",
+					"examples"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TextTokenFunctionList": {
+				"properties": {
+					"source": {
+						"items": {
+							"$ref": "#/components/schemas/SourceFunction"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"source"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IEditorFunctionGetResponse": {
+				"properties": {
+					"text-token-function-list": {
+						"$ref": "#/components/schemas/TextTokenFunctionList"
+					}
+				},
+				"required": [
+					"text-token-function-list"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -3698,6 +4236,324 @@
 						"in": "path",
 						"name": "identifier",
 						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/editor/config": {
+			"get": {
+				"operationId": "GetEditorConfig",
+				"responses": {
+					"200": {
+						"description": "IEditorConfigGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IEditorConfigGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Default configuration for the text token editor",
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Default text token editor settings for a particular area",
+						"in": "query",
+						"name": "area",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify highest level area type to show in hierarchy",
+						"in": "query",
+						"name": "areaTypeMax",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set the authority area in the default text token editor settings",
+						"in": "query",
+						"name": "authorityArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set the child area in the default text token editor settings",
+						"in": "query",
+						"name": "childArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify comparison group",
+						"in": "query",
+						"name": "comparisonGroup",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Toggle whether to include child areas in hierarchy",
+						"in": "query",
+						"name": "includeChildArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default period identifier",
+						"in": "query",
+						"name": "latestPeriod",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default metric dimension",
+						"in": "query",
+						"name": "metricDimension",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default metric type",
+						"in": "query",
+						"name": "metricType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/editor/fields": {
+			"get": {
+				"operationId": "GetEditorFields",
+				"responses": {
+					"200": {
+						"description": "IEditorFieldsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IEditorFieldsGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "List of fields and their default labels",
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Default field labels in the text token editor for a particular area",
+						"in": "query",
+						"name": "area",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify highest level area type to show in hierarchy",
+						"in": "query",
+						"name": "areaTypeMax",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Default field labels in the text token editor for a particular authority area",
+						"in": "query",
+						"name": "authorityArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Default field labels in the text token editor for a particular child area",
+						"in": "query",
+						"name": "childArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify comparison group",
+						"in": "query",
+						"name": "comparisonGroup",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Toggle whether to include child areas in hierarchy",
+						"in": "query",
+						"name": "includeChildArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default period identifier",
+						"in": "query",
+						"name": "latestPeriod",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default metric dimension",
+						"in": "query",
+						"name": "metricDimension",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default metric type",
+						"in": "query",
+						"name": "metricType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/editor/functions": {
+			"get": {
+				"operationId": "GetEditorFunction",
+				"responses": {
+					"200": {
+						"description": "IEditorFieldsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IEditorFunctionGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "List of functions available, and associated metadata",
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Default function list and labels for a particular area",
+						"in": "query",
+						"name": "area",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify highest level area type to show in hierarchy",
+						"in": "query",
+						"name": "areaTypeMax",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Default function list and labels for a particular authority area",
+						"in": "query",
+						"name": "authorityArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Default function list and labels for a particular child area",
+						"in": "query",
+						"name": "childArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify comparison group",
+						"in": "query",
+						"name": "comparisonGroup",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Toggle whether to include child areas in hierarchy",
+						"in": "query",
+						"name": "includeChildArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default period identifier",
+						"in": "query",
+						"name": "latestPeriod",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default metric dimension",
+						"in": "query",
+						"name": "metricDimension",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Set default metric type",
+						"in": "query",
+						"name": "metricType",
+						"required": false,
 						"schema": {
 							"type": "string"
 						}
