@@ -171,3 +171,11 @@ export const DIMENSION_MEMBERS_IDENTIFIER_TARGET_URL =
 // Dimensions
 export const DIMENSIONS_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensions'
+
+// Dimensions Verbose
+export const DIMENSIONS_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensions/verbose'
+
+// Dimensions Identifier
+export const DIMENSIONS_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensions/'

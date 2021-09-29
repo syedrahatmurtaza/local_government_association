@@ -28,6 +28,8 @@ import { DataSetCollectionController } from './../controllers/dataSetCollection.
 import { DerivationController } from './../controllers/derivation.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { DimensionMembersController } from './../controllers/dimensionMembers.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { DimensionsController } from './../controllers/dimensions.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -871,6 +873,42 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "dimensionMember": {"ref":"DimensionMembersVerbose","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDimensionsGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "dimension-array": {"dataType":"array","array":{"dataType":"refObject","ref":"Dimension"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DimensionVerbose": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "canBeSummedToAWhole": {"dataType":"boolean","required":true},
+            "dimensionMembers": {"dataType":"array","array":{"dataType":"refObject","ref":"DimensionMember"},"required":true},
+            "description": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDimensionsVerboseGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "dimension-array": {"dataType":"array","array":{"dataType":"refObject","ref":"DimensionVerbose"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDimensionsIdentifierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "dimension": {"ref":"DimensionVerbose","required":true},
         },
         "additionalProperties": false,
     },
@@ -1756,6 +1794,76 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getDimensionMembersIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/dimensions',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DimensionsController_getDimensions(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DimensionsController();
+
+
+            const promise = controller.getDimensions.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/dimensions/verbose',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DimensionsController_getDimensionsVerbose(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DimensionsController();
+
+
+            const promise = controller.getDimensionsVerbose.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/dimensions/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DimensionsController_getDimensionsIdentifier(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DimensionsController();
+
+
+            const promise = controller.getDimensionsIdentifier.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

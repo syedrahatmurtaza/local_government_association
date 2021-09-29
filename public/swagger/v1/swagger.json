@@ -1920,6 +1920,78 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"IDimensionsGetResponse": {
+				"properties": {
+					"dimension-array": {
+						"items": {
+							"$ref": "#/components/schemas/Dimension"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dimension-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DimensionVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"canBeSummedToAWhole": {
+						"type": "boolean"
+					},
+					"dimensionMembers": {
+						"items": {
+							"$ref": "#/components/schemas/DimensionMember"
+						},
+						"type": "array"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"canBeSummedToAWhole",
+					"dimensionMembers"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDimensionsVerboseGetResponse": {
+				"properties": {
+					"dimension-array": {
+						"items": {
+							"$ref": "#/components/schemas/DimensionVerbose"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dimension-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDimensionsIdentifierGetResponse": {
+				"properties": {
+					"dimension": {
+						"$ref": "#/components/schemas/DimensionVerbose"
+					}
+				},
+				"required": [
+					"dimension"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -3541,6 +3613,97 @@
 					}
 				]
 			}
+		},
+		"/v1/dimensions": {
+			"get": {
+				"operationId": "GetDimensions",
+				"responses": {
+					"200": {
+						"description": "IDimensionsGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDimensionsGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Groups of related dimension members. Dimensions are synonymous with circumstance collections, as listed on the standards site",
+				"tags": [
+					"dimensions"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/dimensions/verbose": {
+			"get": {
+				"operationId": "GetDimensionsVerbose",
+				"responses": {
+					"200": {
+						"description": "IDimensionsVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDimensionsVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "List of all dimensions, giving their full details",
+				"tags": [
+					"dimensions"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/dimensions/{identifier}": {
+			"get": {
+				"operationId": "GetDimensionsIdentifier",
+				"responses": {
+					"200": {
+						"description": "IDimensionsIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDimensionsIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details of a single dimension, selected by its identifier",
+				"tags": [
+					"dimensions"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(Assessmentperiod)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -3591,6 +3754,9 @@
 		},
 		{
 			"name": "dimensionMembers"
+		},
+		{
+			"name": "dimensions"
 		}
 	]
 }
