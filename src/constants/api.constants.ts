@@ -148,3 +148,26 @@ export const DATA_SET_VERBOSE_TARGET_URL =
 // Data Set Verbose
 export const DATA_SET_IDENTIFIER_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/datasets/'
+
+/***************************      Target API Derivation    *****************************************/
+// Derivation
+export const DERIVATION_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/derivation'
+
+/***************************      Target API Dimension Members    *****************************************/
+// Dimension Members
+export const DIMENSION_MEMBERS_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensionMembers'
+
+// Dimension Members Verbose
+export const DIMENSION_MEMBERS_VERBOSE_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensionMembers/verbose'
+
+// Dimension Members Identifier
+export const DIMENSION_MEMBERS_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensionMembers/'
+
+/***************************      Target API Dimension Members    *****************************************/
+// Dimensions
+export const DIMENSIONS_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/dimensions'

@@ -1819,6 +1819,107 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"DimensionMember": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDimensionMemberGetResponse": {
+				"properties": {
+					"dimensionMember-array": {
+						"items": {
+							"$ref": "#/components/schemas/DimensionMember"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dimensionMember-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Dimension": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DimensionMembersVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"dimension": {
+						"$ref": "#/components/schemas/Dimension"
+					},
+					"isDefaultMember": {
+						"type": "boolean"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"dimension",
+					"isDefaultMember"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDimensionMemberVerboseGetResponse": {
+				"properties": {
+					"dimensionMember-array": {
+						"items": {
+							"$ref": "#/components/schemas/DimensionMembersVerbose"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dimensionMember-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IDimensionMembersIdentifierGetResponse": {
+				"properties": {
+					"dimensionMember": {
+						"$ref": "#/components/schemas/DimensionMembersVerbose"
+					}
+				},
+				"required": [
+					"dimensionMember"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -3202,6 +3303,244 @@
 					}
 				]
 			}
+		},
+		"/v1/derivation": {
+			"get": {
+				"operationId": "GetDerivation",
+				"responses": {
+					"200": {
+						"description": "string",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Shows the source and calculation steps (if applicable) for a specified metric value",
+				"tags": [
+					"derivation"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "The area or comparison group that the derived data values are for",
+						"in": "query",
+						"name": "area",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "The metric type ID the derived data values are for",
+						"in": "query",
+						"name": "metricType",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "The time period that is to be returned. To just retrieve data for the latest available period, use \"latest\". For the most recent two time periods, use \"latest:2\", and so on. Otherwise one or more time period identifiers can be used",
+						"in": "query",
+						"name": "period",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Definite custom bands for comparisons",
+						"in": "query",
+						"name": "customBands",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Show derivation from perspective of a specific organisation",
+						"in": "query",
+						"name": "organisationID",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify values, metrictypes or both to determine the data included in the output",
+						"in": "query",
+						"name": "outputType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Show derivation information for a specified type of derived value",
+						"in": "query",
+						"name": "valueType",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify denominator metric ID to use in virtual metric calculation",
+						"in": "query",
+						"name": "virtualMetricType.denominator",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify a label for your virtual metric",
+						"in": "query",
+						"name": "virtualMetricType.label",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify a multiple for your virtual metric calculation",
+						"in": "query",
+						"name": "virtualMetricType.multiple",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Specify numerator metric ID to use in virtual metric calculation",
+						"in": "query",
+						"name": "virtualMetricType.numerator",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Add comparative area for value types which need it",
+						"in": "query",
+						"name": "withArea",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Add comparative period for value types which need it",
+						"in": "query",
+						"name": "withPeriod",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/dimensionMembers": {
+			"get": {
+				"operationId": "GetDimensionMembers",
+				"responses": {
+					"200": {
+						"description": "IDimensionMemberGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDimensionMemberGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Dimension members are synonymous with circumstances, and dimensions with cirumstance collections, as listed on the standards site. Dimension members may apply to multiple metric types, and each metric type can be related to multiple dimension members. For example the metric type for males aged 0-17 has the dimension members of both male in the gender dimension and 0-17 in the social aervices age bands dimension",
+				"summary": "List of all dimension members",
+				"tags": [
+					"dimensionMembers"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/dimensionMembers/verbose": {
+			"get": {
+				"operationId": "GetDimensionMembersVerbose",
+				"responses": {
+					"200": {
+						"description": "IDimensionMemberVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDimensionMemberVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details for all dimension members",
+				"tags": [
+					"dimensionMembers"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/dimensionMembers/{identifier}": {
+			"get": {
+				"operationId": "GetDimensionMembersIdentifier",
+				"responses": {
+					"200": {
+						"description": "IDimensionMembersIdentifierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IDimensionMembersIdentifierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details for a single dimension member, selected via the identifier",
+				"tags": [
+					"dimensionMembers"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(Caredelaycause_Adultsocialcare)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -3246,6 +3585,12 @@
 		},
 		{
 			"name": "datasets"
+		},
+		{
+			"name": "derivation"
+		},
+		{
+			"name": "dimensionMembers"
 		}
 	]
 }

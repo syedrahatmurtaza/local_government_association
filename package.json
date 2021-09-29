@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "start": "node build/index.js",
+    "bStart": "npm run build && node build/index.js",
     "predev": "rimraf ./public/swagger.json && npm run swagger",
     "prebuild": "rimraf ./public/swagger/v1/swagger.json && npm run swagger",
     "swagger": "tsoa spec && tsoa routes",

@@ -24,6 +24,10 @@ import { DataController } from './../controllers/data.controller';
 import { DataSetController } from './../controllers/dataSet.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { DataSetCollectionController } from './../controllers/dataSetCollection.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { DerivationController } from './../controllers/derivation.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { DimensionMembersController } from './../controllers/dimensionMembers.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -817,6 +821,60 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DimensionMember": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDimensionMemberGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "dimensionMember-array": {"dataType":"array","array":{"dataType":"refObject","ref":"DimensionMember"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Dimension": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DimensionMembersVerbose": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "dimension": {"ref":"Dimension","required":true},
+            "isDefaultMember": {"dataType":"boolean","required":true},
+            "description": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDimensionMemberVerboseGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "dimensionMember-array": {"dataType":"array","array":{"dataType":"refObject","ref":"DimensionMembersVerbose"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IDimensionMembersIdentifierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "dimensionMember": {"ref":"DimensionMembersVerbose","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const validationService = new ValidationService(models);
 
@@ -1592,6 +1650,112 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getDataSetCollectionIdentifier.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/derivation',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DerivationController_getDerivation(request: any, response: any, next: any) {
+            const args = {
+                    area: {"in":"query","name":"area","required":true,"dataType":"string"},
+                    metricType: {"in":"query","name":"metricType","required":true,"dataType":"double"},
+                    period: {"in":"query","name":"period","required":true,"dataType":"string"},
+                    customBands: {"in":"query","name":"customBands","dataType":"string"},
+                    organisationID: {"in":"query","name":"organisationID","dataType":"string"},
+                    outputType: {"in":"query","name":"outputType","dataType":"string"},
+                    valueType: {"in":"query","name":"valueType","dataType":"string"},
+                    virtualMetricTypeDenominator: {"in":"query","name":"virtualMetricType.denominator","dataType":"string"},
+                    virtualMetricTypeLabel: {"in":"query","name":"virtualMetricType.label","dataType":"string"},
+                    virtualMetricTypeMultiple: {"in":"query","name":"virtualMetricType.multiple","dataType":"string"},
+                    virtualMetricTypeNumerator: {"in":"query","name":"virtualMetricType.numerator","dataType":"string"},
+                    withArea: {"in":"query","name":"withArea","dataType":"string"},
+                    withPeriod: {"in":"query","name":"withPeriod","dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DerivationController();
+
+
+            const promise = controller.getDerivation.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/dimensionMembers',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DimensionMembersController_getDimensionMembers(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DimensionMembersController();
+
+
+            const promise = controller.getDimensionMembers.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/dimensionMembers/verbose',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DimensionMembersController_getDimensionMembersVerbose(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DimensionMembersController();
+
+
+            const promise = controller.getDimensionMembersVerbose.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/dimensionMembers/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function DimensionMembersController_getDimensionMembersIdentifier(request: any, response: any, next: any) {
+            const args = {
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new DimensionMembersController();
+
+
+            const promise = controller.getDimensionMembersIdentifier.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

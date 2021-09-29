@@ -34,7 +34,10 @@
       { "name": "comparisonGroups" },
       { "name": "data" },
       { "name": "datasetCollections" },
-      { "name": "datasets" }
+      { "name": "datasets" },
+      { "name": "derivation" },
+      { "name": "dimensionMembers" },
+      { "name": "dimensions" }
     ]
   },
   "routes": {
