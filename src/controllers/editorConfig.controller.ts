@@ -1,10 +1,11 @@
-import { Controller, Get, Query, Route, Security } from '@tsoa/runtime'
+import { Controller, Get, Query, Route, Security, Tags } from '@tsoa/runtime'
 import { EditorConfigRepository } from '../repositories/editorConfig.repository'
 import { IEditorConfigGetResponse } from '../types/responses/informPlus/editor/config.response'
 import { IEditorFieldsGetResponse } from '../types/responses/informPlus/editor/field.response'
 import { IEditorFunctionGetResponse } from '../types/responses/informPlus/editor/function.response'
 
 @Route('v1/editor')
+@Tags('editor')
 export class EditorConfigController extends Controller {
   constructor() {
     super()

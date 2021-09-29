@@ -192,3 +192,22 @@ export const EDITOR_FIELD_TARGET_URL =
 // Editor Functions
 export const EDITOR_FUNCTIONS_TARGET_URL =
   BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/editor/functions'
+
+/***************************      Target API Lists    *****************************************/
+// Lists
+export const LISTS_TARGET_URL = BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/lists'
+
+// Lists By Tag
+export const LISTS_TAG_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/lists/areas'
+
+// Lists By Id
+export const LISTS_LISTID_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/lists/'
+
+// Lists By Id Verbose Path
+export const LISTS_LISTID_VERBOSE_PATH = '/verbose'
+
+// Lists By Id
+export const LISTS_IDENTIFIER_TARGET_URL =
+  BASE_URL_LOCAL_GOVERNMENT_ASSOCIATION + '/lists/'

@@ -32,6 +32,8 @@ import { DimensionMembersController } from './../controllers/dimensionMembers.co
 import { DimensionsController } from './../controllers/dimensions.controller';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { EditorConfigController } from './../controllers/editorConfig.controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { ListController } from './../controllers/lists.controller';
 import { expressAuthentication } from './../middlewears/authentication';
 // @ts-ignore - no great way to install types from subpackage
 const promiseAny = require('promise.any');
@@ -1153,6 +1155,297 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ItemType": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ListArray": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "itemBaseUri": {"dataType":"string","required":true},
+            "itemCurieStub": {"dataType":"string","required":true},
+            "itemType": {"ref":"ItemType","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "list-array": {"dataType":"array","array":{"dataType":"refObject","ref":"ListArray"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ItemTag": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "parents": {"dataType":"array","array":{"dataType":"any"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ListTag": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "created": {"dataType":"datetime","required":true},
+            "modified": {"dataType":"datetime","required":true},
+            "fullDescription": {"dataType":"string","required":true},
+            "accuracy": {"dataType":"string","required":true},
+            "audience": {"dataType":"string","required":true},
+            "completeness": {"dataType":"string","required":true},
+            "coverage": {"dataType":"string","required":true},
+            "intendedLongevity": {"dataType":"string","required":true},
+            "issued": {"dataType":"datetime","required":true},
+            "provenance": {"dataType":"string","required":true},
+            "rights": {"dataType":"string","required":true},
+            "status": {"dataType":"string","required":true},
+            "timeliness": {"dataType":"string","required":true},
+            "version": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "items": {"dataType":"array","array":{"dataType":"refObject","ref":"ItemTag"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListTagGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "list": {"ref":"ListTag","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListByIDGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "list": {"ref":"ListTag","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ItemTypeVerbose": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "URI": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Parent": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "itemType": {"ref":"ItemTypeVerbose"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "DeliversItem": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string"},
+            "uri": {"dataType":"string","required":true},
+            "itemType": {"ref":"ItemTypeVerbose","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Delivers": {
+        "dataType": "refObject",
+        "properties": {
+            "label": {"dataType":"string","required":true},
+            "items": {"dataType":"array","array":{"dataType":"refObject","ref":"DeliversItem"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Performs": {
+        "dataType": "refObject",
+        "properties": {
+            "label": {"dataType":"string","required":true},
+            "items": {"dataType":"array","array":{"dataType":"refObject","ref":"Parent"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Mappings": {
+        "dataType": "refObject",
+        "properties": {
+            "delivers": {"ref":"Delivers"},
+            "performs": {"ref":"Performs"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ListElement": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "itemBaseUri": {"dataType":"string","required":true},
+            "itemCurieStub": {"dataType":"string","required":true},
+            "itemType": {"ref":"Parent","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ListItem": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "parents": {"dataType":"array","array":{"dataType":"refObject","ref":"Parent"},"required":true},
+            "mappings": {"ref":"Mappings","required":true},
+            "lists": {"dataType":"array","array":{"dataType":"refObject","ref":"ListElement"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListByIDVerboseGetResponseList": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "created": {"dataType":"datetime","required":true},
+            "modified": {"dataType":"datetime","required":true},
+            "fullDescription": {"dataType":"string","required":true},
+            "accuracy": {"dataType":"string","required":true},
+            "audience": {"dataType":"string","required":true},
+            "completeness": {"dataType":"string","required":true},
+            "coverage": {"dataType":"string","required":true},
+            "intendedLongevity": {"dataType":"string","required":true},
+            "issued": {"dataType":"datetime","required":true},
+            "provenance": {"dataType":"string","required":true},
+            "rights": {"dataType":"string","required":true},
+            "status": {"dataType":"string","required":true},
+            "timeliness": {"dataType":"string","required":true},
+            "version": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "items": {"dataType":"array","array":{"dataType":"refObject","ref":"ListItem"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListByIDVerboseGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "list": {"ref":"IListByIDVerboseGetResponseList","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ItemItemType": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "URI": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ItemElement": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "itemType": {"ref":"ItemItemType","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Contains": {
+        "dataType": "refObject",
+        "properties": {
+            "label": {"dataType":"string","required":true},
+            "items": {"dataType":"array","array":{"dataType":"refObject","ref":"ItemElement"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "MappingsIdentifier": {
+        "dataType": "refObject",
+        "properties": {
+            "contains": {"ref":"Contains","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ListItemType": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "List": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "itemBaseUri": {"dataType":"string","required":true},
+            "itemCurieStub": {"dataType":"string","required":true},
+            "itemType": {"ref":"ListItemType","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListIdenfitierGetResponseItem": {
+        "dataType": "refObject",
+        "properties": {
+            "identifier": {"dataType":"string","required":true},
+            "label": {"dataType":"string","required":true},
+            "uri": {"dataType":"string","required":true},
+            "children": {"dataType":"array","array":{"dataType":"any"},"required":true},
+            "parents": {"dataType":"array","array":{"dataType":"any"},"required":true},
+            "mappings": {"ref":"MappingsIdentifier","required":true},
+            "lists": {"dataType":"array","array":{"dataType":"refObject","ref":"List"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "IListIdenfitierGetResponse": {
+        "dataType": "refObject",
+        "properties": {
+            "item": {"ref":"IListIdenfitierGetResponseItem","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const validationService = new ValidationService(models);
 
@@ -2200,6 +2493,126 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.getEditorFunction.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/lists',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ListController_getList(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ListController();
+
+
+            const promise = controller.getList.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/lists/areas',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ListController_getListByTag(request: any, response: any, next: any) {
+            const args = {
+                    tag: {"in":"query","name":"tag","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ListController();
+
+
+            const promise = controller.getListByTag.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/lists/:listId',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ListController_getListById(request: any, response: any, next: any) {
+            const args = {
+                    listId: {"in":"path","name":"listId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ListController();
+
+
+            const promise = controller.getListById.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/lists/:listId/verbose',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ListController_getListByIdVerbose(request: any, response: any, next: any) {
+            const args = {
+                    listId: {"in":"path","name":"listId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ListController();
+
+
+            const promise = controller.getListByIdVerbose.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/v1/lists/:listId/:identifier',
+            authenticateMiddleware([{"apiKeyAuth":[]}]),
+
+            function ListController_getListByListIdenfitier(request: any, response: any, next: any) {
+            const args = {
+                    listId: {"in":"path","name":"listId","required":true,"dataType":"string"},
+                    identifier: {"in":"path","name":"identifier","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new ListController();
+
+
+            const promise = controller.getListByListIdenfitier.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa

@@ -37,7 +37,9 @@
       { "name": "datasets" },
       { "name": "derivation" },
       { "name": "dimensionMembers" },
-      { "name": "dimensions" }
+      { "name": "dimensions" },
+      { "name": "editor" },
+      { "name": "lists" }
     ]
   },
   "routes": {

@@ -2530,6 +2530,700 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"ItemType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListArray": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"itemBaseUri": {
+						"type": "string"
+					},
+					"itemCurieStub": {
+						"type": "string"
+					},
+					"itemType": {
+						"$ref": "#/components/schemas/ItemType"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"uri",
+					"itemBaseUri",
+					"itemCurieStub",
+					"itemType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListGetResponse": {
+				"properties": {
+					"list-array": {
+						"items": {
+							"$ref": "#/components/schemas/ListArray"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"list-array"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ItemTag": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"parents": {
+						"items": {},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri",
+					"parents"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListTag": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"created": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"fullDescription": {
+						"type": "string"
+					},
+					"accuracy": {
+						"type": "string"
+					},
+					"audience": {
+						"type": "string"
+					},
+					"completeness": {
+						"type": "string"
+					},
+					"coverage": {
+						"type": "string"
+					},
+					"intendedLongevity": {
+						"type": "string"
+					},
+					"issued": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"provenance": {
+						"type": "string"
+					},
+					"rights": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"timeliness": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/ItemTag"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"created",
+					"modified",
+					"fullDescription",
+					"accuracy",
+					"audience",
+					"completeness",
+					"coverage",
+					"intendedLongevity",
+					"issued",
+					"provenance",
+					"rights",
+					"status",
+					"timeliness",
+					"version",
+					"uri",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListTagGetResponse": {
+				"properties": {
+					"list": {
+						"$ref": "#/components/schemas/ListTag"
+					}
+				},
+				"required": [
+					"list"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListByIDGetResponse": {
+				"properties": {
+					"list": {
+						"$ref": "#/components/schemas/ListTag"
+					}
+				},
+				"required": [
+					"list"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ItemTypeVerbose": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"URI": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"URI"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Parent": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"itemType": {
+						"$ref": "#/components/schemas/ItemTypeVerbose"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DeliversItem": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"itemType": {
+						"$ref": "#/components/schemas/ItemTypeVerbose"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri",
+					"itemType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Delivers": {
+				"properties": {
+					"label": {
+						"type": "string"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/DeliversItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"label",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Performs": {
+				"properties": {
+					"label": {
+						"type": "string"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/Parent"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"label",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Mappings": {
+				"properties": {
+					"delivers": {
+						"$ref": "#/components/schemas/Delivers"
+					},
+					"performs": {
+						"$ref": "#/components/schemas/Performs"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListElement": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"itemBaseUri": {
+						"type": "string"
+					},
+					"itemCurieStub": {
+						"type": "string"
+					},
+					"itemType": {
+						"$ref": "#/components/schemas/Parent"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"uri",
+					"itemBaseUri",
+					"itemCurieStub",
+					"itemType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListItem": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"parents": {
+						"items": {
+							"$ref": "#/components/schemas/Parent"
+						},
+						"type": "array"
+					},
+					"mappings": {
+						"$ref": "#/components/schemas/Mappings"
+					},
+					"lists": {
+						"items": {
+							"$ref": "#/components/schemas/ListElement"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri",
+					"parents",
+					"mappings",
+					"lists"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListByIDVerboseGetResponseList": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"created": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"fullDescription": {
+						"type": "string"
+					},
+					"accuracy": {
+						"type": "string"
+					},
+					"audience": {
+						"type": "string"
+					},
+					"completeness": {
+						"type": "string"
+					},
+					"coverage": {
+						"type": "string"
+					},
+					"intendedLongevity": {
+						"type": "string"
+					},
+					"issued": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"provenance": {
+						"type": "string"
+					},
+					"rights": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"timeliness": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/ListItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"created",
+					"modified",
+					"fullDescription",
+					"accuracy",
+					"audience",
+					"completeness",
+					"coverage",
+					"intendedLongevity",
+					"issued",
+					"provenance",
+					"rights",
+					"status",
+					"timeliness",
+					"version",
+					"uri",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListByIDVerboseGetResponse": {
+				"properties": {
+					"list": {
+						"$ref": "#/components/schemas/IListByIDVerboseGetResponseList"
+					}
+				},
+				"required": [
+					"list"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ItemItemType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"URI": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"URI"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ItemElement": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"itemType": {
+						"$ref": "#/components/schemas/ItemItemType"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"uri",
+					"itemType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Contains": {
+				"properties": {
+					"label": {
+						"type": "string"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/ItemElement"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"label",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MappingsIdentifier": {
+				"properties": {
+					"contains": {
+						"$ref": "#/components/schemas/Contains"
+					}
+				},
+				"required": [
+					"contains"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListItemType": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"List": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"itemBaseUri": {
+						"type": "string"
+					},
+					"itemCurieStub": {
+						"type": "string"
+					},
+					"itemType": {
+						"$ref": "#/components/schemas/ListItemType"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"description",
+					"uri",
+					"itemBaseUri",
+					"itemCurieStub",
+					"itemType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListIdenfitierGetResponseItem": {
+				"properties": {
+					"identifier": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"uri": {
+						"type": "string"
+					},
+					"children": {
+						"items": {},
+						"type": "array"
+					},
+					"parents": {
+						"items": {},
+						"type": "array"
+					},
+					"mappings": {
+						"$ref": "#/components/schemas/MappingsIdentifier"
+					},
+					"lists": {
+						"items": {
+							"$ref": "#/components/schemas/List"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"identifier",
+					"label",
+					"uri",
+					"children",
+					"parents",
+					"mappings",
+					"lists"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListIdenfitierGetResponse": {
+				"properties": {
+					"item": {
+						"$ref": "#/components/schemas/IListIdenfitierGetResponseItem"
+					}
+				},
+				"required": [
+					"item"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {
@@ -4259,6 +4953,9 @@
 					}
 				},
 				"summary": "Default configuration for the text token editor",
+				"tags": [
+					"editor"
+				],
 				"security": [
 					{
 						"apiKeyAuth": []
@@ -4365,6 +5062,9 @@
 					}
 				},
 				"summary": "List of fields and their default labels",
+				"tags": [
+					"editor"
+				],
 				"security": [
 					{
 						"apiKeyAuth": []
@@ -4471,6 +5171,9 @@
 					}
 				},
 				"summary": "List of functions available, and associated metadata",
+				"tags": [
+					"editor"
+				],
 				"security": [
 					{
 						"apiKeyAuth": []
@@ -4560,6 +5263,190 @@
 					}
 				]
 			}
+		},
+		"/v1/lists": {
+			"get": {
+				"operationId": "GetList",
+				"responses": {
+					"200": {
+						"description": "IListGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IListGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Gives properties of lists and list subsets available through LG Inform Plus standards",
+				"tags": [
+					"lists"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/v1/lists/areas": {
+			"get": {
+				"operationId": "GetListByTag",
+				"responses": {
+					"200": {
+						"description": "IListGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IListTagGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Gives properties of lists and list subsets available through LG Inform Plus standards",
+				"tags": [
+					"lists"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "Filter the list items by the specified tag",
+						"in": "query",
+						"name": "tag",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/lists/{listId}": {
+			"get": {
+				"operationId": "GetListById",
+				"responses": {
+					"200": {
+						"description": "IListByIDGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IListByIDGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Gives full properties of a single list and lists all its items",
+				"tags": [
+					"lists"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(az)",
+						"in": "path",
+						"name": "listId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/lists/{listId}/verbose": {
+			"get": {
+				"operationId": "GetListByIdVerbose",
+				"responses": {
+					"200": {
+						"description": "IListByIDVerboseGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IListByIDVerboseGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Full details of the given list and all its items, including mappings",
+				"tags": [
+					"lists"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(organisationTypes)",
+						"in": "path",
+						"name": "listId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/lists/{listId}/{identifier}": {
+			"get": {
+				"operationId": "GetListByListIdenfitier",
+				"responses": {
+					"200": {
+						"description": "IListIdenfitierGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IListIdenfitierGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"summary": "Gives full properties of a single list item",
+				"tags": [
+					"lists"
+				],
+				"security": [
+					{
+						"apiKeyAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "(az)",
+						"in": "path",
+						"name": "listId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "(A50987)",
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [
@@ -4613,6 +5500,12 @@
 		},
 		{
 			"name": "dimensions"
+		},
+		{
+			"name": "editor"
+		},
+		{
+			"name": "lists"
 		}
 	]
 }
